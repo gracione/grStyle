@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: "http://salao.localhost/",
+  baseURL: "http://grstyle.localhost/api/",
 })
 
 const token = localStorage.getItem('token');
