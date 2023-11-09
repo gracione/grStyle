@@ -29,10 +29,6 @@ class FuncionariosController extends Controller
     {
         $funcionarios = $this->funcionarios->getFuncionariosAndProfissao();
 
-        if (!$funcionarios) {
-            return response()->json(['message' => 'Nenhum Funcionario Encontrado'], 404);
-        }
-
         return response()->json($funcionarios, 200);
     }
 

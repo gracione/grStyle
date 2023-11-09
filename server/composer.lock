@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c61ff82cbf0142a401a48a8161e1595a",
+    "content-hash": "2f10792b9a860b6a8330b60e744b62f1",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6346,6 +6346,50 @@
             "time": "2022-02-21T01:04:05+00:00"
         },
         {
+            "name": "php-debug/debugger",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yuncopy/debugger.git",
+                "reference": "56f4d1403c5fb49d5be3c1257e82342f17a13aab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yuncopy/debugger/zipball/56f4d1403c5fb49d5be3c1257e82342f17a13aab",
+                "reference": "56f4d1403c5fb49d5be3c1257e82342f17a13aab",
+                "shasum": ""
+            },
+            "type": "php-extension",
+            "autoload": {
+                "psr-4": {
+                    "Debugger\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ajay",
+                    "email": "yuncopy@sina.com"
+                }
+            ],
+            "description": "The debugger  for the wzphp framework",
+            "keywords": [
+                "debugger",
+                "framework",
+                "redis",
+                "wzphp"
+            ],
+            "support": {
+                "forum": "https://github.com/yuncopy",
+                "issues": "https://github.com/yuncopy/debugger/issues",
+                "source": "https://github.com/yuncopy/debugger"
+            },
+            "time": "2019-02-20T08:23:07+00:00"
+        },
+        {
             "name": "phpunit/php-code-coverage",
             "version": "9.2.29",
             "source": {
@@ -7780,6 +7824,64 @@
                 }
             ],
             "time": "2021-07-28T10:34:58+00:00"
+        },
+        {
+            "name": "tpaksu/xdebug-toggle",
+            "version": "0.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tpaksu/xdebug-toggle.git",
+                "reference": "5179405ccb364cd7906ea07f3ad83af3933b325a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tpaksu/xdebug-toggle/zipball/5179405ccb364cd7906ea07f3ad83af3933b325a",
+                "reference": "5179405ccb364cd7906ea07f3ad83af3933b325a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": ">=5.6",
+                "illuminate/support": ">=5.6"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.0",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Tpaksu\\XdebugToggle\\XdebugToggleServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tpaksu\\XdebugToggle\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taha PAKSU",
+                    "email": "tpaksu@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Toggles on/of the already installed xdebug extension on php.ini file.",
+            "homepage": "https://github.com/tpaksu/xdebug-toggle",
+            "keywords": [
+                "tpaksu",
+                "xdebug-toggle"
+            ],
+            "support": {
+                "issues": "https://github.com/tpaksu/xdebug-toggle/issues",
+                "source": "https://github.com/tpaksu/xdebug-toggle/tree/master"
+            },
+            "time": "2020-06-18T07:12:58+00:00"
         }
     ],
     "aliases": [],
