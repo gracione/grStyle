@@ -19,7 +19,7 @@ import AlterarFeriado from './paginas/Feriados/alterar';
 import RelatorioAtendimento from './relatorio/atendimento';
 import RelatorioFinanceiro from './relatorio/financeiro';
 import Listar from './components/listar';
-import Menu from './paginas/Menu';
+import Menu from './Menu';
 import AlterarFolga from './paginas/Folgas/alterar';
 import ConfiguracoesSistema from './paginas/ConfiguracoesSistema';
 import AlterarFoto from './paginas/Configuracoes/AlterarFoto';

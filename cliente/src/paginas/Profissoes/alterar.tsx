@@ -1,4 +1,4 @@
-import Menu from "../Menu";
+import Menu from "../../Menu";
 import { Container, Conteudo, Header } from "../../styles/global";
 import Alterar from "../../components/alterar";
 import { useState, useEffect } from "react";
