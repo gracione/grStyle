@@ -5,28 +5,28 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Profissao;
 
-class ProfissaoController extends Controller
+class ProfissaoController extends BaseController
 {
     public $profissao;
 
-    public function __construct()
+    protected function getModel()
     {
-        $this->profissao = new Profissao();
+        return new Profissao();
     }
 
     public function inserir(Request $request)
     {
-        return $this->profissao->inserir($request);
+        return $this->model->inserir($request);
     }
 
     public function listar()
     {
-        return $this->profissao->listar();
+        return $this->model->listar();
     }
 
     public function alterar(Request $request)
     {
-        return $this->profissao->alterar($request);
+        return $this->model->alterar($request);
     }
 
     public function getById(Request $request)

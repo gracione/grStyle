@@ -5,8 +5,7 @@ import { faUser, faCog, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { GoogleLogout } from "react-google-login";
 
 const Menu = () => {
-  const CLIENT_ID =
-    "959861611664-n7ql4k5hf128e48qbsspdhu0vdkd3sar.apps.googleusercontent.com";
+  const CLIENT_ID ="959861611664-n7ql4k5hf128e48qbsspdhu0vdkd3sar.apps.googleusercontent.com";
   const PROFILE = ["nenhum", "Administrativo", "Funcionario", "Cliente"];
   const userType = localStorage.getItem("tipo_usuario");
   const userName = localStorage.getItem("nome");
@@ -39,11 +38,11 @@ const Menu = () => {
         >
           {userType === "1" && (
             <>
-              <Nav.Link className="m-1" as={Link} to={"/funcionarios"}>
-                Funcionario
-              </Nav.Link>
               <Nav.Link className="m-1" as={Link} to={"/profissao"}>
                 Profissão
+              </Nav.Link>
+              <Nav.Link className="m-1" as={Link} to={"/funcionarios"}>
+                Funcionario
               </Nav.Link>
               <Nav.Link className="m-1" as={Link} to={"/expediente"}>
                 Horario de Funcionamento
