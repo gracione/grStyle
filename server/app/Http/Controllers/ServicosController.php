@@ -6,13 +6,18 @@ use Illuminate\Http\Request;
 
 use App\Models\Servicos;
 
-class ServicosController extends Controller
+class ServicosController extends BaseController
 {
     public $servicos;
-
+    
     public function __construct()
     {
         $this->servicos = new Servicos();
+    }
+
+    protected function getModel()
+    {
+        return new Servicos();
     }
 
     public function listar(Request $request)

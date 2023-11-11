@@ -8,13 +8,18 @@ use App\Models\Galeria;
 use App\Models\Imagens;
 use Illuminate\Support\Facades\App;
 
-class GaleriaController extends Controller
+class GaleriaController extends BaseController
 {
     public $galeria;
 
+    
     public function __construct()
     {
         $this->galeria = new Galeria();
+    }
+    protected function getModel()
+    {
+        return new Galeria();
     }
 
     public function listar()

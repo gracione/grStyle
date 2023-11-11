@@ -6,13 +6,18 @@ use Illuminate\Http\Request;
 use App\Models\Horario;
 use App\Models\Util;
 
-class HorarioController extends Controller
+class HorarioController extends BaseController
 {
     public $horario;
 
     public function __construct()
     {
         $this->horario = new Horario();
+    }
+
+    protected function getModel()
+    {
+        return new Horario();
     }
 
     public function inserir(Request $request)

@@ -6,15 +6,19 @@ use App\Models\Profissao;
 use Illuminate\Http\Request;
 use App\Models\Tratamentos;
 
-class TratamentosController extends Controller
+class TratamentosController extends BaseController
 {
     public $tratamentos;
     public $profissao;
-
     public function __construct()
     {
         $this->tratamentos = new Tratamentos();
         $this->profissao = new Profissao();
+    }
+
+    protected function getModel()
+    {
+        return new Tratamentos();
     }
 
     public function listar()

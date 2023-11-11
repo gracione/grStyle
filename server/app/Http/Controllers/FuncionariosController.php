@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Funcionario;
 use Illuminate\Http\Request;
 use App\Models\Funcionarios;
 use App\Models\HorarioTrabalho;
 use App\Models\Profissao;
 
-class FuncionariosController extends Controller
+class FuncionariosController extends BaseController
 {
     private $funcionarios;
     private $expediente;
@@ -18,6 +19,11 @@ class FuncionariosController extends Controller
         $this->funcionarios = $funcionarios;
         $this->expediente = $expediente;
         $this->profissao = $profissao;
+    }
+
+    protected function getModel()
+    {
+        return new Funcionario();
     }
 
     public function listar()

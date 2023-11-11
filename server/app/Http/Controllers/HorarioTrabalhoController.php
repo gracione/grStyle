@@ -5,13 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Expediente as HorarioTrabalho;
 
-class HorarioTrabalhoController extends Controller
+class HorarioTrabalhoController extends BaseController
 {
     public $expediente;
 
     public function __construct()
     {
         $this->expediente = new HorarioTrabalho();
+    }
+
+    protected function getModel()
+    {
+        return new HorarioTrabalho();
     }
 
     public function listar()

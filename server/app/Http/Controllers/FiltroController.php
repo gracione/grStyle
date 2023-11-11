@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Filtro;
 use App\Models\FiltroTipo;
 
-class FiltroController extends Controller
+class FiltroController extends BaseController
 {
     public $filtro;
     public $filtroTipo;
@@ -15,6 +15,11 @@ class FiltroController extends Controller
     {
         $this->filtro = new Filtro();
         $this->filtroTipo = new FiltroTipo();
+    }
+
+    protected function getModel()
+    {
+        return new Filtro();
     }
 
     public function listar()
