@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Conteudo,Header } from "../../styles/global";
-import BuscarDadosApi from "../../components/util";
+import BuscarDadosApi from "../../services/util";
 import Inserir from "../../components/inserir";
 
 export default function InserirExpediente() {

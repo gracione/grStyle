@@ -7,13 +7,13 @@ export default function BuscarDadosApi(funcao: string, opcao: string, dados: any
 
   useEffect(() => {
     if (!dados) {
+      console.log(url);
       api.get(url)
         .then((response) => setListagem(response.data))
     } else {
       api.post(url, { dados: dados })
       .then((response) => setListagem(response.data))
     }
-  console.log(dados);
   }, []);
 
   return listagem;

@@ -24,18 +24,18 @@ class Configuracao extends Model
         }
     }
 
-    public function alterar($request)
-    {
-        foreach ($request->request as $key => $value) {
-            if ($value) {
-                $ar[$key] = $value;
-            }
-        }
-
-        DB::table('configuracao')
-            ->update(array_filter($ar));
-
-        return true;
-    }
+//    public function alterar($request)
+//    {
+//        foreach ($request->request as $key => $value) {
+//            if ($value) {
+//                $ar[$key] = $value;
+//            }
+//        }
+//
+//        DB::table('configuracao')
+//            ->update(array_filter($ar));
+//
+//        return true;
+//    }
 
 }

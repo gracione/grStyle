@@ -31,15 +31,15 @@ class ProfissaoController extends BaseController
 
     public function getById(Request $request)
     {
-        return $this->profissao->getById($request);
+        return $this->model->getById($request);
     }
     public function getByIdFuncionario(Request $request)
     {
-        return $this->profissao->getByIdFuncionario($request);
+        return $this->model->getByIdFuncionario($request);
     }
     public function destroy(Request $request)
     {
-        $profissao = $this->profissao->find($request->id);
+        $profissao = $this->model->find($request->id);
         return $profissao->delete($request->id);
     }
 

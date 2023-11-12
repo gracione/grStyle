@@ -10,13 +10,6 @@ use Illuminate\Support\Facades\App;
 
 class GaleriaController extends BaseController
 {
-    public $galeria;
-
-    
-    public function __construct()
-    {
-        $this->galeria = new Galeria();
-    }
     protected function getModel()
     {
         return new Galeria();
@@ -24,12 +17,12 @@ class GaleriaController extends BaseController
 
     public function listar()
     {
-        return $this->galeria->listar();
+        return $this->model->listar();
     }
 
     public function fotosAlbum(Request $request)
     {
-        return $this->galeria->fotosAlbum($request);
+        return $this->model->fotosAlbum($request);
     }
     public function uploadFoto(Request $request)
     {
@@ -59,19 +52,19 @@ class GaleriaController extends BaseController
     }
     public function inserir(Request $request)
     {
-        return $this->galeria->inserir($request);
+        return $this->model->inserir($request);
     }
 
     public function destroy(Request $request)
     {
-        $galeria = $this->galeria->find($request->id);
+        $galeria = $this->model->find($request->id);
         return $galeria->delete($request->id);
     }
 
     public function alterar(Request $request)
     {
         try {
-            $this->galeria->alterar($request);
+            $this->model->alterar($request);
         } catch (Exception $e) {
             return false;
         }

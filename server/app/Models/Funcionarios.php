@@ -33,16 +33,17 @@ class Funcionarios extends Model
 
     public function listar()
     {
-        return $this->select(
+        $query = $this->select(
             'users.nome as nome',
             'users.id as id',
             DB::raw('group_concat(profissao.nome) as profissao')
         )
-            ->join('users', 'funcionario.id_usuario', '=', 'users.id')
-            ->join('profissao', 'funcionario.id_profissao', '=', 'profissao.id')
-            ->groupBy('nome', 'id')
-            ->get()
-            ->toArray();
+        ->join('users', 'funcionario.id_usuario', '=', 'users.id')
+        ->join('profissao', 'funcionario.id_profissao', '=', 'profissao.id')
+        ->groupBy('nome', 'id');
+    
+    $results = $query->get();
+    return $results->toArray();
     }
 
     public function getFuncionariosAndProfissao()

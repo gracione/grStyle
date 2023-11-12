@@ -1,4 +1,4 @@
-import BuscarDadosApi from "../../../components/util";
+import BuscarDadosApi from "../../../services/util";
 import { CardFuncionario, Container } from "./styles";
 import { useState, useEffect } from "react";
 import api from "../../../services/api";

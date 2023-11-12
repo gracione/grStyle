@@ -1,7 +1,7 @@
 import { Conteudo, Header } from "../../styles/global";
 
 import { useState, useEffect } from "react";
-import BuscarDadosApi from "../../components/util";
+import BuscarDadosApi from "../../services/util";
 import { useParams } from "react-router-dom";
 
 import api from "../../services/api";

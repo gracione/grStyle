@@ -41,15 +41,6 @@ const Menu = () => {
               <Nav.Link className="m-1" as={Link} to={"/profissao"}>
                 Profissão
               </Nav.Link>
-              <Nav.Link className="m-1" as={Link} to={"/funcionarios"}>
-                Funcionario
-              </Nav.Link>
-              <Nav.Link className="m-1" as={Link} to={"/expediente"}>
-                Horario de Funcionamento
-              </Nav.Link>
-              {/* <Nav.Link className="m-1" as={Link} to={"/galeria"}>
-                Galeria
-              </Nav.Link>*/}
               <NavDropdown className="m-1" title="Serviços">
                 <NavDropdown.Item>
                   <Nav.Link
@@ -71,6 +62,15 @@ const Menu = () => {
                   </Nav.Link>
                 </NavDropdown.Item>
               </NavDropdown>
+              <Nav.Link className="m-1" as={Link} to={"/funcionarios"}>
+                Funcionario
+              </Nav.Link>
+              <Nav.Link className="m-1" as={Link} to={"/expediente"}>
+                Horario de Funcionamento
+              </Nav.Link>
+              {/* <Nav.Link className="m-1" as={Link} to={"/galeria"}>
+                Galeria
+              </Nav.Link>*/}
               <NavDropdown className="m-1" title="Bloqueio de Datas">
                 <NavDropdown.Item>
                   <Nav.Link className="text-dark" as={Link} to={"/feriados"}>

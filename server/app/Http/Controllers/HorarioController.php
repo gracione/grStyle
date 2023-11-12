@@ -8,12 +8,6 @@ use App\Models\Util;
 
 class HorarioController extends BaseController
 {
-    public $horario;
-
-    public function __construct()
-    {
-        $this->horario = new Horario();
-    }
 
     protected function getModel()
     {
@@ -58,31 +52,31 @@ class HorarioController extends BaseController
         ];
     
         // Insere os dados no banco de dados utilizando o método apropriado
-        return $this->horario->inserir($ar);
+        return $this->model->inserir($ar);
     }
     
     public function desmarcar(Request $request)
     {
-        return $this->horario->excluir($request);
+        return $this->model->excluir($request);
     }
     public function destroy(Request $request)
     {
-        $horario = $this->horario->find($request->id);
+        $horario = $this->model->find($request->id);
         return $horario->delete($request->id);
     }
     public function confirmar(Request $request)
     {
-        return $this->horario->confirmar($request);
+        return $this->model->confirmar($request);
     }
 
     public function alterar(Request $request)
     {
-        return $this->horario->alterar($request);
+        return $this->model->alterar($request);
     }
 
     public function horariosMarcados(Request $request)
     {
-        return $this->horario->horarioPorDia($request);
+        return $this->model->horarioPorDia($request);
     }
 
     public function tempoGasto(Request $request)
@@ -93,7 +87,7 @@ class HorarioController extends BaseController
 
     public function horariosDisponivel(Request $request)
     {
-        return $this->horario->listar($request);
+        return $this->model->listar($request);
     }
 
     public function verificarHorario($tempo, $horario)

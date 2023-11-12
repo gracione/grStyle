@@ -5,47 +5,35 @@ namespace App\Http\Controllers;
 use Funcionario;
 use Illuminate\Http\Request;
 use App\Models\Funcionarios;
-use App\Models\HorarioTrabalho;
-use App\Models\Profissao;
 
 class FuncionariosController extends BaseController
 {
-    private $funcionarios;
-    private $expediente;
-    private $profissao;
-
-    public function __construct(Funcionarios $funcionarios, HorarioTrabalho $expediente, Profissao $profissao)
-    {
-        $this->funcionarios = $funcionarios;
-        $this->expediente = $expediente;
-        $this->profissao = $profissao;
-    }
-
     protected function getModel()
     {
-        return new Funcionario();
+        return new Funcionarios();
     }
 
     public function listar()
     {
-        return $this->funcionarios->listar();
+        return $this->model->listar();
     }
 
     public function listarFuncionarios()
     {
-        $funcionarios = $this->funcionarios->getFuncionariosAndProfissao();
-
-        return response()->json($funcionarios, 200);
+        return $this->model->getFuncionariosAndProfissao();
     }
 
     public function dadosFuncionarioByIdUsuario(Request $request)
     {
+        $expediente = new \App\Models\HorarioTrabalho();
+        $profissao = new \App\Models\Profissao();
+
         $idUsuario = !empty($request->id) ? $request->id : $request;
 
-        $expediente = $this->expediente->getByIdUsuario($idUsuario);
-        $funcionario = $this->funcionarios->getByIdUsuario($idUsuario);
-        $profissao = $this->profissao->getByIdUsuario($idUsuario);
-        $profissoes = $this->profissao->listar();
+        $expediente = $expediente->getByIdUsuario($idUsuario);
+        $funcionario = $this->model->getByIdUsuario($idUsuario);
+        $profissao = $profissao->getByIdUsuario($idUsuario);
+        $profissoes = $profissao->listar();
 
         return [
             'expediente' => $expediente, 
@@ -57,21 +45,21 @@ class FuncionariosController extends BaseController
 
     public function inserir(Request $request)
     {
-        return $this->funcionarios->inserir($request);
+        return $this->model->inserir($request);
     }
 
     public function destroyByIdUsuario(Request $request)
     {
-        return $this->funcionarios->excluirByIdUsuario($request->id);
+        return $this->model->excluirByIdUsuario($request->id);
     }
 
     public function destroyByIdFuncionario(Request $request)
     {
-        return $this->funcionarios->excluirByIdFuncionario($request->id);
+        return $this->model->excluirByIdFuncionario($request->id);
     }
 
     public function alterar(Request $request)
     {
-        return $this->funcionarios->alterar($request);
+        return $this->model->alterar($request);
     }
 }

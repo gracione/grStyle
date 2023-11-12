@@ -7,13 +7,6 @@ use App\Models\Expediente as HorarioTrabalho;
 
 class HorarioTrabalhoController extends BaseController
 {
-    public $expediente;
-
-    public function __construct()
-    {
-        $this->expediente = new HorarioTrabalho();
-    }
-
     protected function getModel()
     {
         return new HorarioTrabalho();
@@ -21,20 +14,20 @@ class HorarioTrabalhoController extends BaseController
 
     public function listar()
     {
-        return $this->expediente->listar();
+        return $this->model->listar();
     }
     public function getById(Request $request)
     {
-        return $this->expediente->getByIdUsuario($request->id);
+        return $this->model->getByIdUsuario($request->id);
     }
 
     public function inserir(Request $request)
     {
-        return $this->expediente->inserir($request);
+        return $this->model->inserir($request);
     }
     public function destroy(Request $request)
     {
-        $expediente = $this->expediente->find($request->id);
+        $expediente = $this->model->find($request->id);
         return $expediente->delete($request->id);
     }
 

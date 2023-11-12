@@ -2,7 +2,7 @@ import api from '../../../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { Cartao, Container } from './styles';
-import BuscarDadosApi from '../../../components/util';
+import BuscarDadosApi from '../../../services/util';
 import { useState, useEffect } from 'react';
 import { Modal } from 'react-responsive-modal';
 

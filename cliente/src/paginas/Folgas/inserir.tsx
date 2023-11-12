@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BuscarDadosApi from "../../components/util";
+import BuscarDadosApi from "../../services/util";
 import Inserir from "../../components/inserir";
 
 export default function InserirFolga() {

@@ -1,11 +1,8 @@
 import { useState } from "react";
 import InputMask from "react-input-mask";
-
-import { Conteudo, Header } from "../../styles/global";
 import { AdicionarProfissao } from "./styles";
-
 import Inserir from "../../components/inserir";
-import BuscarDadosApi from "../../components/util";
+import BuscarDadosApi from "../../services/util";
 
 export default function InserirFuncionario() {
   const [inicioExpediente, setInicioExpediente] = useState("07:00");
@@ -28,7 +25,7 @@ export default function InserirFuncionario() {
     profissoesCadastradasAux[indice] = valor;
     setProfissoesCadastradas(profissoesCadastradasAux);
   }
-
+  
   return (
     <>
       {profissoesCadastradas}

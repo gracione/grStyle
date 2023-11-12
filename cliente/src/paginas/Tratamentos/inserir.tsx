@@ -1,6 +1,6 @@
 import { AdicionarItem, Conteudo, Header } from "../../styles/global";
 import { useState } from "react";
-import BuscarDadosApi from "../../components/util";
+import BuscarDadosApi from "../../services/util";
 import Inserir from "../../components/inserir";
 
 export default function InserirTratamento() {
@@ -67,7 +67,7 @@ export default function InserirTratamento() {
         <select onChange={(e) => setIdProfissao(e.target.value)} required>
           <option value={0}>Escolha a Profissão</option>
           {profissoes.map((element: any) => (
-            <option value={element.id}>{element.profissão}</option>
+            <option value={element.id}>{element.profissao}</option>
           ))}
         </select>
 
@@ -112,7 +112,7 @@ export default function InserirTratamento() {
         </fieldset>
       </div>
       <Inserir
-        modulo="tratamentos"
+        modulo="servicos-profissao"
         dados={{
           tratamento,
           tempoGasto,

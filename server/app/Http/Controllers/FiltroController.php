@@ -8,15 +8,6 @@ use App\Models\FiltroTipo;
 
 class FiltroController extends BaseController
 {
-    public $filtro;
-    public $filtroTipo;
-
-    public function __construct()
-    {
-        $this->filtro = new Filtro();
-        $this->filtroTipo = new FiltroTipo();
-    }
-
     protected function getModel()
     {
         return new Filtro();
@@ -24,16 +15,17 @@ class FiltroController extends BaseController
 
     public function listar()
     {
-        return $this->filtro->listar();
+        return $this->model->listar();
     }
 
     public function listarFiltro(Request $request)
     {
-        return $this->filtro->listarFiltro($request);
+        return $this->model->listarFiltro($request);
     }
 
     public function listarFiltroTipoById(Request $request)
     {
-        return $this->filtroTipo->getByIdTratamento($request);
+        $filtroTipo = new FiltroTipo();
+        return $filtroTipo->getByIdTratamento($request);
     }
 }
