@@ -71,7 +71,7 @@ export default function Listar(props: any) {
               <tr>
                 {colunas.map((nome: string, value: any) => (
                   <th className="text-capitalize" key={nome}>
-                    {nome.replaceAll("_", " ")} {value}
+                    {nome.replaceAll("_", " ")}
                   </th>
                 ))}
                 <th colSpan={2}></th>
