@@ -1,5 +1,5 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
-import { Conteudo, Header } from "../../../styles/global";
+import { Conteudo, Header } from "styles/global";
 import api from "services/api";
 
 export default function Configuracoes() {

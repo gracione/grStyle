@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Conteudo, Header } from "../../styles/global";
+import { Conteudo, Header } from "styles/global";
 import { useParams } from "react-router-dom";
 import Alterar from "../../components/UpdateModal";
 import api from "services/api";

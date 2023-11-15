@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Conteudo,Header } from "../../styles/global";
+import { Conteudo,Header } from "styles/global";
 import BuscarDadosApi from "../../services/util";
 import Inserir from "../../components/SaveModal";
 

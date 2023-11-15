@@ -1,4 +1,4 @@
-import { Container, Conteudo, Header } from "../../styles/global";
+import { Container, Conteudo, Header } from "styles/global";
 import Alterar from "../../components/UpdateModal";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";

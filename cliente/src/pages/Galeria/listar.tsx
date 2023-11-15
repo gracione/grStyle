@@ -3,7 +3,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import { BsFillPencilFill } from "react-icons/bs";
 import api from "services/api";
 import { Conteudo } from "./styles";
-import { Adicionar, Header, TituloFuncao } from "../../styles/global";
+import { Adicionar, Header, TituloFuncao } from "styles/global";
 import { Modal, Button } from "react-bootstrap";
 import ModalSalvar from "../../components/DeleteModal";
 import ModalErro from "../../components/ErrorModal";

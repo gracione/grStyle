@@ -2,7 +2,7 @@ import api from 'services/api';
 import { useParams } from "react-router-dom";
 import Alterar from "../../components/UpdateModal";
 import { useState, useEffect } from "react";
-import { Conteudo, Header } from "../../styles/global";
+import { Conteudo, Header } from "styles/global";
 
 export default function AlterarTratamento() {
   const { idTratamento } = useParams();

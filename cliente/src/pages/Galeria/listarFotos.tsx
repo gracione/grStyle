@@ -1,6 +1,6 @@
 import api from "services/api";
 import { Conteudo } from "./styles";
-import { Header } from "../../styles/global";
+import { Header } from "styles/global";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";

@@ -1,4 +1,4 @@
-import { Center } from "../../styles/global";
+import { Center } from "styles/global";
 import { PainelCalendario, Calendario, Container, Conteudo } from './styles';
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";

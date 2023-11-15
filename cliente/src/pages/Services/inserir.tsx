@@ -1,4 +1,4 @@
-import { AdicionarItem, Conteudo, Header } from "../../styles/global";
+import { AdicionarItem, Conteudo, Header } from "styles/global";
 import { useState } from "react";
 import BuscarDadosApi from "../../services/util";
 import Inserir from "../../components/SaveModal";
