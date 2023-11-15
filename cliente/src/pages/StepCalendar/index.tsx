@@ -62,7 +62,7 @@ export default function EtapaCalendario() {
   }
 
   const { idFuncionario } = useParams();
-//  const folga = BuscarDadosApi('folgas', 'listar-id-funcionario', { idFuncionario });
+//  const folga = BuscarDadosApi('folgas', 'list-holidays-by-employee-id', { idFuncionario });
   const [feriados, setFeriados] = useState([]);
   const dias = [0, 1, 2, 3, 4, 5, 6];
   const diasSemana = criarArrayCalendario(ano, mes);

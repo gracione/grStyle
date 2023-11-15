@@ -12,7 +12,7 @@ class FolgasController extends BaseController
         return new Folgas();
     }
 
-    public function getByIdFuncionario(Request $request)
+    public function listHolidaysByEmployeeId(Request $request)
     {
         return $this->model->getByIdFuncionario($request);
     }

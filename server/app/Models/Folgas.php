@@ -87,7 +87,6 @@ class Folgas extends Model
 
         DB::table('folga')->insert([
             'dia_semana' => $request->diaSemana,
-            'id_funcionario' => $dados[0],
             'id_usuario' => $dados[1]
         ]);
 

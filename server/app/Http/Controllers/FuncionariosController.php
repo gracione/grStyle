@@ -22,6 +22,11 @@ class FuncionariosController extends BaseController
     {
         return $this->model->getFuncionariosAndProfissao();
     }
+    public function listEmployeesWithUserId()
+    {
+        return $this->model->listEmployeesWithUserId();
+    }
+
 
     public function dadosFuncionarioByIdUsuario(Request $request)
     {

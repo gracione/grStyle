@@ -68,6 +68,28 @@ class Funcionarios extends Model
         return $select->get()->toArray();
     }
 
+    public function listEmployeesWithUserId()
+    {
+        $select = $this->select(
+            'users.nome as nome',
+            'profissao.nome as profissao',
+            'funcionario.id_usuario',
+            'profissao.id as id_profissao'
+        )
+            ->join('users', 'funcionario.id_usuario', '=', 'users.id')
+            ->join('profissao', 'funcionario.id_profissao', '=', 'profissao.id');
+
+        $tipoUsuario = auth()->user()->tipo_usuario;
+        $idUsuario = auth()->user()->id;
+            
+        if ($tipoUsuario == Constantes::FUNCIONARIO) {
+            $select = $select->where('funcionario.id_usuario', $idUsuario);
+        }
+
+        return $select->get()->toArray();
+    }
+
+
     public function getByIdUsuario($id)
     {
         return $this->select(

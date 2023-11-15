@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/funcionarios/listar', [App\Http\Controllers\FuncionariosController::class, 'listar']);
     Route::post('/funcionarios/listar-id', [App\Http\Controllers\FuncionariosController::class, 'dadosFuncionarioByIdUsuario']);
     Route::get('/funcionarios/listar-funcionarios', [App\Http\Controllers\FuncionariosController::class, 'listarFuncionarios']);
+    Route::get('/funcionarios/list-employees-with-user-id', [App\Http\Controllers\FuncionariosController::class, 'listEmployeesWithUserId']);
     Route::post('/funcionarios/inserir', [App\Http\Controllers\FuncionariosController::class, 'inserir']);
     Route::post('/funcionarios/alterar', [App\Http\Controllers\FuncionariosController::class, 'alterar']);
     Route::post('/funcionarios/excluir', [App\Http\Controllers\FuncionariosController::class, 'destroyByIdUsuario']);
@@ -85,7 +86,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('/folgas/listar', [App\Http\Controllers\FolgasController::class, 'listar']);
     Route::post('/folgas/listar-id', [App\Http\Controllers\FolgasController::class, 'getById']);
-    Route::post('/folgas/listar-id-funcionario', [App\Http\Controllers\FolgasController::class, 'getByIdFuncionario']);
+    Route::post('/folgas/list-holidays-by-employee-id', [App\Http\Controllers\FolgasController::class, 'listHolidaysByEmployeeId']);
     Route::post('/folgas/inserir', [App\Http\Controllers\FolgasController::class, 'inserir']);
     Route::post('/folgas/alterar', [App\Http\Controllers\FolgasController::class, 'alterar']);
     Route::post('/folgas/excluir', [App\Http\Controllers\FolgasController::class, 'destroy']);

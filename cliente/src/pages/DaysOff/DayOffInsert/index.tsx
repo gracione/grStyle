@@ -4,15 +4,15 @@ import Inserir from "../../../components/SaveModal";
 
 export default function DayOffInsert() {
   const [diaSemana, setDiaSemana] = useState("");
-  const [idFuncionario, setIdFuncionario] = useState({});
-  let funcionario = BuscarDadosApi('funcionarios', 'listar-funcionarios');
+  const [idUsuario, setIdUsuario] = useState({});
+  let funcionario = BuscarDadosApi('funcionarios', 'list-employees-with-user-id');
 
   return (
     <>
-        <select onChange={(e) => setIdFuncionario(e.target.value)} required>
+        <select onChange={(e) => setIdUsuario(e.target.value)} required>
           <option>Escolha o Funcionario</option>
           {funcionario.map((element: any) => (
-            <option value={[element.id_funcionario, element.id]}>
+            <option value={[element.id_usuario]}>
               {element.nome} {element.profissão}
             </option>
           ))}
@@ -27,7 +27,7 @@ export default function DayOffInsert() {
           <option value={6}>Sexta Feira</option>
           <option value={7}>Sabado</option>
         </select>
-      <Inserir modulo="folgas" dados={{ diaSemana, dados: idFuncionario }} />
+      <Inserir modulo="folgas" dados={{ dia_semana : diaSemana, id_usuario : idUsuario }} />
     </>
   );
 }
