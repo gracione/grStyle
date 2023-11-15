@@ -1,8 +1,8 @@
-import Profissao from "../../src/paginas/Profissoes/adicionar";
-import Funcionario from "../../src/paginas/Funcionarios/inserir";
-import Feriados from "../../src/paginas/Feriados/inserir";
-import Folgas from "../../src/paginas/Folgas/inserir";
-import Tratamentos from "../../src/paginas/Tratamentos/inserir";
+import Profissao from "../../src/pages/Profissoes/adicionar";
+import Funcionario from "../../src/pages/Funcionarios/inserir";
+import Feriados from "../../src/pages/Feriados/inserir";
+import Folgas from "../../src/pages/Folgas/inserir";
+import Tratamentos from "../../src/pages/Tratamentos/inserir";
 
 export default function ModalInserir(props: any) {
   const { funcao } = props;
