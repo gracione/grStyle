@@ -1,4 +1,4 @@
-import Alterar from "../../../components/alterar";
+import Alterar from "../../../components/UpdateModal";
 import { Center, Conteudo, Header } from "../../../styles/global";
 import api from 'services/api';
 import { useState, useEffect, JSXElementConstructor, ReactElement, ReactFragment, ReactPortal } from "react";

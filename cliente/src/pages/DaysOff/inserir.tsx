@@ -1,6 +1,6 @@
 import { useState } from "react";
 import BuscarDadosApi from "../../services/util";
-import Inserir from "../../components/inserir";
+import Inserir from "../../components/SaveModal";
 
 export default function InserirFolga() {
   const [diaSemana, setDiaSemana] = useState("");

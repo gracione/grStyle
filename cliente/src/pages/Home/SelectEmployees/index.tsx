@@ -5,7 +5,7 @@ import api from "services/api";
 import Filtros from "./FilterModal";
 import { FaClock } from "react-icons/fa";
 
-export default function EmployeesModal(props: any) {
+export default function SelectEmployees(props: any) {
   const idTipoUsuario: any = localStorage.getItem("tipo_usuario");
   const funcionario = BuscarDadosApi("funcionarios", "listar-funcionarios");
   const [tempoGasto, setTempoGasto] = useState(0);

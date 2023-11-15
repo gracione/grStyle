@@ -1,6 +1,6 @@
 import { Modal } from 'react-responsive-modal';
 import React, { useState } from 'react';
-import api from '../../src/services/api';
+import api from '../../services/api';
 
 export default function Inserir({ modulo, dados }: any) {
   const [open, setOpen] = useState(false);

@@ -1,6 +1,6 @@
 import api from 'services/api';
 import { useParams } from "react-router-dom";
-import Alterar from "../../components/alterar";
+import Alterar from "../../components/UpdateModal";
 import { useState, useEffect } from "react";
 import { Conteudo, Header } from "../../styles/global";
 

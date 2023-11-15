@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Inserir from "../../components/inserir";
+import Inserir from "../../components/SaveModal";
 
 export default function InserirFeriado() {
   const [data, setData] = useState("");

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Inserir from "../../components/inserir";
+import Inserir from "../../components/SaveModal";
 import { Form, Button } from "react-bootstrap";
 
 export default function Adicionar() {

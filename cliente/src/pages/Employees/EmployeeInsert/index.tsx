@@ -1,7 +1,7 @@
 import { useState } from "react";
 import InputMask from "react-input-mask";
 import { AdicionarProfissao } from "../styles";
-import Inserir from "../../../components/inserir";
+import Inserir from "../../../components/SaveModal";
 import BuscarDadosApi from "../../../services/util";
 
 export default function InserirFuncionario() {

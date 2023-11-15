@@ -5,7 +5,7 @@ import api from "services/api";
 import { Conteudo } from "./styles";
 import { Adicionar, Header, TituloFuncao } from "../../styles/global";
 import { Modal, Button } from "react-bootstrap";
-import ModalSalvar from "../../components/ModalSalvar";
+import ModalSalvar from "../../components/DeleteModal";
 import ModalErro from "../../components/ErrorModal";
 import ModalInserir from "../../components/AddItemModal";
 import InserirAlbum from "./inserir";

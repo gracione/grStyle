@@ -1,7 +1,7 @@
 import { AdicionarItem, Conteudo, Header } from "../../styles/global";
 import { useState } from "react";
 import BuscarDadosApi from "../../services/util";
-import Inserir from "../../components/inserir";
+import Inserir from "../../components/SaveModal";
 
 export default function InserirTratamento() {
   const [tratamento, setTratamento] = useState("");
