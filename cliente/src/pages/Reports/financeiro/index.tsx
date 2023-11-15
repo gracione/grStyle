@@ -1,4 +1,4 @@
-import { Container, Conteudo, Header } from "../../styles/global";
+import { Container, Conteudo, Header } from "styles/global";
 
 export default function relatorio() {
 

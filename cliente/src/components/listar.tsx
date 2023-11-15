@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { BsFillPencilFill } from "react-icons/bs";
-import api from "../../src/services/api";
+import api from "services/api";
 import { Adicionar, Conteudo, Header, TituloFuncao } from "../styles/global";
 import { Modal, Button } from "react-bootstrap";
 import ModalSalvar from "./ModalSalvar";
-import ModalErro from "./ModalErro";
+import ModalErro from "./ErrorModal";
 import ModalInserir from "./AddItemModal";
 
 function removeAccents(str: any) {

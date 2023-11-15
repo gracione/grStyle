@@ -23,15 +23,3 @@ export const Container = styled.div`
     }
 
 `;
-
-export const Conteudo = styled.div`
-
-    @media (max-width: 767px) {
-
-    }
-
-    @media (min-width: 767px) {
-
-    }
-
-`;

@@ -1,5 +1,3 @@
-import { FaTimesCircle } from 'react-icons/fa';
-
 export default function ModalErro(props: any) {
 
   return (

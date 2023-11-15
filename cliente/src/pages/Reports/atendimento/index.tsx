@@ -1,4 +1,4 @@
-import { Conteudo, Header } from "../../styles/global";
+import { Conteudo, Header } from "styles/global";
 import { useState, useEffect } from 'react';
 import api from 'services/api';
 
