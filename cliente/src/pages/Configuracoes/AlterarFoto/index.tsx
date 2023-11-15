@@ -1,6 +1,6 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { Conteudo, Header } from "../../../styles/global";
-import api from "../../../services/api";
+import api from "services/api";
 
 export default function Configuracoes() {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);

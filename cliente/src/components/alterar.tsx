@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal } from 'react-responsive-modal';
-import api from '../services/api';
+import api from 'services/api';
 
 interface Props {
   modulo: string;

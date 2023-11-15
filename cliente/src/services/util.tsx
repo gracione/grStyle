@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import api from "../services/api";
+import api from "services/api";
 
 export default function BuscarDadosApi(funcao: string, opcao: string, dados: any = false) {
   const [listagem, setListagem] = useState<any>([]);

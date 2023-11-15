@@ -2,7 +2,7 @@ import { Container, Conteudo, Header } from "../../styles/global";
 import Alterar from "../../components/alterar";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import api from "../../../src/services/api";
+import api from "services/api";
 
 export default function AlterarFeriado() {
   const [listagem, setListagem]: any = useState([]);

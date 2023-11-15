@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Conteudo, Header } from "../../styles/global";
 import { useParams } from "react-router-dom";
 import Alterar from "../../components/alterar";
-import api from "../../services/api";
+import api from "services/api";
 
 export default function AlterarFolga() {
   const [diaSemana, setDiaSemana] = useState('');

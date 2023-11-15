@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import api from "../../services/api";
+import api from "services/api";
 import { Conteudo, Header } from "../../styles/global";
 import Alterar from "../../components/alterar";
 

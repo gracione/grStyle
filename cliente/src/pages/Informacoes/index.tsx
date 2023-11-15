@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import BuscarDadosApi from "../../services/util";
 import { useParams } from "react-router-dom";
 
-import api from "../../services/api";
+import api from "services/api";
 import Filtros from "./filtro";
 
 export default function Informacoes() {

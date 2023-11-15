@@ -1,4 +1,4 @@
-import api from '../../../services/api';
+import api from 'services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { Cartao, Container } from './styles';

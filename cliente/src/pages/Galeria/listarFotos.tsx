@@ -1,4 +1,4 @@
-import api from "../../services/api";
+import api from "services/api";
 import { Conteudo } from "./styles";
 import { Header } from "../../styles/global";
 import { useParams } from "react-router-dom";

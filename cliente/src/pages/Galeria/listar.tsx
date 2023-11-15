@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { BsFillPencilFill } from "react-icons/bs";
-import api from "../../services/api";
+import api from "services/api";
 import { Conteudo } from "./styles";
 import { Adicionar, Header, TituloFuncao } from "../../styles/global";
 import { Modal, Button } from "react-bootstrap";

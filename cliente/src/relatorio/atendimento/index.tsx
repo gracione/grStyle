@@ -1,6 +1,6 @@
 import { Conteudo, Header } from "../../styles/global";
 import { useState, useEffect } from 'react';
-import api from '../../services/api';
+import api from 'services/api';
 
 export default function Relatorio() {
   const [dataInicio, setDataInicio] = useState(new Date().toISOString().split('T')[0]);

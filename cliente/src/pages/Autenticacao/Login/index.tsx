@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 import { GiFairyWand } from "react-icons/gi";
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { gapi } from 'gapi-script';
-import api from '../../../services/api';
+import api from 'services/api';
 
 const GOOGLE_CLIENT_ID = "959861611664-n7ql4k5hf128e48qbsspdhu0vdkd3sar.apps.googleusercontent.com";
 
