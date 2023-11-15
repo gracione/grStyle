@@ -6,7 +6,7 @@ import { Adicionar, Conteudo, Header, TituloFuncao } from "../styles/global";
 import { Modal, Button } from "react-bootstrap";
 import ModalSalvar from "./ModalSalvar";
 import ModalErro from "./ModalErro";
-import ModalInserir from "./ModalInserir";
+import ModalInserir from "./AddItemModal";
 
 function removeAccents(str: any) {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");

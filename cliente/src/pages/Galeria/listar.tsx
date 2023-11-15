@@ -7,7 +7,7 @@ import { Adicionar, Header, TituloFuncao } from "../../styles/global";
 import { Modal, Button } from "react-bootstrap";
 import ModalSalvar from "../../components/ModalSalvar";
 import ModalErro from "../../components/ModalErro";
-import ModalInserir from "../../components/ModalInserir";
+import ModalInserir from "../../components/AddItemModal";
 import InserirAlbum from "./inserir";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
