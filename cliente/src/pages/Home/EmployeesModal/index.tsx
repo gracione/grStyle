@@ -2,10 +2,10 @@ import BuscarDadosApi from "../../../services/util";
 import { CardFuncionario, Container } from "./styles";
 import { useState, useEffect } from "react";
 import api from "../../../services/api";
-import Filtros from "./filtro";
+import Filtros from "./TimeSpentModal";
 import { FaClock } from "react-icons/fa";
 
-export default function Funcionarios(props: any) {
+export default function EmployeesModal(props: any) {
   const idTipoUsuario: any = localStorage.getItem("tipo_usuario");
   const funcionario = BuscarDadosApi("funcionarios", "listar-funcionarios");
   const [tempoGasto, setTempoGasto] = useState(0);

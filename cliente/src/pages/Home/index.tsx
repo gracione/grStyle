@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp,faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
-import Funcionarios from "./funcionarios";
-import HorarioMarcado from "./horariosMarcados";
+import Funcionarios from "./EmployeesModal";
+import HorarioMarcado from "./ScheduledTimesModal";
 import { AgendarHorario, Container, HorariosMarcados } from "./styles";
 import { ADM, CLIENTE, FUNCIONARIO } from "../../constantes";
 

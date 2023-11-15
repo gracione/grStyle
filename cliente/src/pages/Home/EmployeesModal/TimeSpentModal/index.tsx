@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import api from "../../../services/api";
+import api from "../../../../services/api";
 
-export default function Filtros(props: any) {
+export default function TimeSpentModal(props: any) {
   const [filtro, setFiltro] = useState([]);
   const [matrisFiltros, setMatrisFiltros] = useState(
     () => Array.from({ length: filtro.length },
