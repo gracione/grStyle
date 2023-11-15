@@ -106,7 +106,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/configuracao/dados-configuracao', [App\Http\Controllers\API\AuthController::class, 'dadosConfiguracao']);
     Route::post('/configuracoes/alterar', [App\Http\Controllers\API\AuthController::class, 'alterar']);
     Route::post('/configuracao-sistema/alterar', [App\Http\Controllers\ConfiguracaoController::class, 'alterar']);
-    Route::get('/configuracao-sistema/listar', [App\Http\Controllers\ConfiguracaoController::class, 'listar']);
+    Route::post('/configuracao-sistema/listar', [App\Http\Controllers\ConfiguracaoController::class, 'listar']);
     Route::post('/configuracoes/enviar-imagem', [App\Http\Controllers\API\AuthController::class, 'enviarImagem'])->name('api.upload.image');
 
     Route::get('/users/listar', [App\Http\Controllers\API\AuthController::class, 'listar']);
