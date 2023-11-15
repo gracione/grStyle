@@ -1,8 +1,8 @@
 import { useState } from "react";
-import BuscarDadosApi from "../../services/util";
-import Inserir from "../../components/SaveModal";
+import BuscarDadosApi from "../../../services/util";
+import Inserir from "../../../components/SaveModal";
 
-export default function InserirFolga() {
+export default function DayOffInsert() {
   const [diaSemana, setDiaSemana] = useState("");
   const [idFuncionario, setIdFuncionario] = useState({});
   let funcionario = BuscarDadosApi('funcionarios', 'listar-funcionarios');

@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { Conteudo, Header } from "styles/global";
 import { useParams } from "react-router-dom";
-import Alterar from "../../components/UpdateModal";
+import Alterar from "../../../components/UpdateModal";
 import api from "services/api";
 
-export default function AlterarFolga() {
+export default function DayOffUpdate() {
   const [diaSemana, setDiaSemana] = useState('');
   const { idFolga } = useParams();
   const [listagem, setListagem]: any = useState([]);
