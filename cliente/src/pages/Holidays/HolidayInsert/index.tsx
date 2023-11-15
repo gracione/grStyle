@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Inserir from "../../components/SaveModal";
+import Inserir from "../../../components/SaveModal";
 
-export default function InserirFeriado() {
+export default function HolidayInsert() {
   const [data, setData] = useState("");
   const [nome, setFeriado] = useState("");
   return (

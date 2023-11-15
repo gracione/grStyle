@@ -1,6 +1,6 @@
 import Profissao from "../../pages/Professions/adicionar";
 import Funcionario from "../../pages/Employees/EmployeeInsert";
-import Feriados from "../../pages/Holidays/inserir";
+import Feriados from "../../pages/Holidays/HolidayInsert";
 import Folgas from "../../pages/DaysOff/DayOffInsert";
 import Tratamentos from "../../pages/Services/inserir";
 

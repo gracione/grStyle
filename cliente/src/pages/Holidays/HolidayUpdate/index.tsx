@@ -1,25 +1,24 @@
 import { Container, Conteudo, Header } from "styles/global";
-import Alterar from "../../components/UpdateModal";
+import Alterar from "../../../components/UpdateModal";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import api from "services/api";
 
-export default function AlterarFeriado() {
-  const [listagem, setListagem]: any = useState([]);
+export default function HolidayUpdate() {
   const { idFeriado } = useParams();
-
+  const [listagem, setListagem]: any = useState([]);
   const [data, setData] = useState('');
   const [nome, setFeriado] = useState('');
+
   useEffect(() => {
     api
       .post("/feriados/listar-id", {
         idFeriado
       })
-      .then((response) => setListagem(response.data[0]));
+      .then((response) => setListagem(response.data));
 
   }, []);
 
-  console.log(listagem);
   return (
       <Header>
         <Conteudo>

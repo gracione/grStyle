@@ -13,14 +13,14 @@ import InserirFuncionario from "./pages/Employees/EmployeeInsert";
 import InserirTratamento from "./pages/Services/inserir";
 import AlterarTratamento from "./pages/Services/alterar";
 import InserirExpediente from "./pages/OfficeHour/inserir";
-import InserirFeriado from "./pages/Holidays/inserir";
+import InserirFeriado from "./pages/Holidays/HolidayInsert";
 import InserirFolga from "./pages/DaysOff/DayOffInsert";
-import AlterarFeriado from './pages/Holidays/alterar';
+import AlterarFeriado from './pages/Holidays/HolidayUpdate';
 import RelatorioAtendimento from './pages/Reports/atendimento';
 import RelatorioFinanceiro from './pages/Reports/financeiro';
 import Listar from './components/List';
 import Menu from './components/Menu';
-import AlterarFolga from './pages/DaysOff/DayOffUpdate';
+import DayOffUpdate from './pages/DaysOff/DayOffUpdate';
 import ConfiguracoesSistema from './pages/SystemSettings';
 import AlterarFoto from './pages/Settings/AlterarFoto';
 import Chat from './pages/Chat/index';
@@ -73,7 +73,7 @@ export default function Rota() {
 
                 <Route path="/folgas" element={<Listar funcao="folgas" colunas={["funcionario", "profissao","folga"]} />} />
                 <Route path="/folgas/adicionar" element={< InserirFolga />} />
-                <Route path="/folgas/alterar/:idFolga" element={< AlterarFolga />} />
+                <Route path="/folgas/alterar/:idFolga" element={< DayOffUpdate />} />
 
                 <Route path="/expediente" element={<Listar funcao="expediente" colunas={["funcionario", "inicio_de_expediente", "inicio_horario_de_almoco", "fim_horario_de_almoco", "fim_de_expediente"]} />} />
                 <Route path="/expediente/adicionar" element={< InserirExpediente />} />
