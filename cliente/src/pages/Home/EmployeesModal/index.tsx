@@ -1,8 +1,8 @@
-import BuscarDadosApi from "../../../services/util";
+import BuscarDadosApi from "services/util";
 import { CardFuncionario, Container } from "./styles";
 import { useState, useEffect } from "react";
-import api from "../../../services/api";
-import Filtros from "./TimeSpentModal";
+import api from "services/api";
+import Filtros from "./FilterModal";
 import { FaClock } from "react-icons/fa";
 
 export default function EmployeesModal(props: any) {
@@ -50,7 +50,7 @@ export default function EmployeesModal(props: any) {
       {funcionario.map((element: any) => (
         <CardFuncionario
           key={element.id}
-          className={`${idTipoUsuario !== "3" && props.nomeCliente.length <= 0 ? "opacity-50 text-secondary" : ""} ${element.id === funcionarioSelecionado ? "bg-dark" : ""}`}
+          className={`${idTipoUsuario !== "3" && props.nomeCliente.length <= 0 ? "opacity-50 text-secondary" : ""} ${element.id === funcionarioSelecionado ? "bg-secondary text-dark" : "text-white"}`}
           onClick={() => {
             etapaTratamento({ funcionario: element.id, id_profissao: element.id_profissao, nomeCliente: props.nomeCliente });
             setFuncionarioSelecionado(element.id);
@@ -63,7 +63,6 @@ export default function EmployeesModal(props: any) {
         <h2>{element.id}</h2>
       </CardFuncionario>
       ))}
-
       {formActive && (
         <form
           action={`/escolher-horario/funcionario/${idUsuarioFuncionario}/profissao/${idProfissao}/tratamento/${idTratamento}/filtro/${idFiltro}/${urlNomeCliente}`}
