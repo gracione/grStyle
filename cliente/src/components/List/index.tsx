@@ -22,7 +22,7 @@ export default function Listar(props: any) {
 
   useEffect(() => {
     api
-      .get(`/${funcao}/listar`)
+      .get(`/${funcao}`)
       .then((response) => setListagem(response.data));
   }, [funcao]);
 

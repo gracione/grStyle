@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Conteudo, Header } from "styles/global";
 import { useParams } from "react-router-dom";
-import Alterar from "../../../components/UpdateModal";
+import Alterar from "components/UpdateModal";
 import api from "services/api";
 
 export default function DayOffUpdate() {
@@ -11,12 +11,9 @@ export default function DayOffUpdate() {
 
   useEffect(() => {
     api
-      .post("/folgas/listar-id", {
-        id: idFolga
-      })
-      .then((response) => setListagem(response.data[0]));
+    .get("/folgas/"+idFolga)
+    .then((response) => setListagem(response.data));
   }, []);
-
   return (
     <Header>
       <Conteudo>

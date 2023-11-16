@@ -12,14 +12,14 @@ class Folgas extends Model
     use HasFactory;
     protected $table = 'folga';
     public $timestamps = false;
-    protected $fillable = ['dia_semana' ,'id_funcionario' ,'id_usuario'];
+    protected $fillable = ['dia_semana' ,'id_usuario'];
 
-    public function listar()
+    public function list($id = false)
     {
-        return DB::table('folga')
-            ->join('funcionario', 'funcionario.id', '=', 'folga.id_funcionario')
+        $query = DB::table('folga')
+            ->join('users', 'users.id', '=', 'folga.id_usuario')
+            ->join('funcionario', 'funcionario.id_usuario', '=', 'folga.id_usuario')
             ->join('profissao', 'funcionario.id_profissao', '=', 'profissao.id')
-            ->join('users', 'users.id', '=', 'funcionario.id_usuario')
             ->join('semana', 'semana.id', '=', 'folga.dia_semana')
             ->select(
                 'users.nome as funcionario',
@@ -27,27 +27,13 @@ class Folgas extends Model
                 'folga.id as id',
                 'folga.dia_semana as dia_semana',
                 'profissao.nome as profissao'
-            )
-            ->get()
-            ->toArray();
-    }
-
-    public function getById($request)
-    {
-        return DB::table('folga')
-            ->join('funcionario', 'funcionario.id', '=', 'folga.id_funcionario')
-            ->join('profissao', 'funcionario.id_profissao', '=', 'profissao.id')
-            ->join('users', 'users.id', '=', 'funcionario.id_usuario')
-            ->join('semana', 'semana.id', '=', 'folga.dia_semana')
-            ->select(
-                'users.nome as funcionario',
-                'semana.nome as folga',
-                'folga.id as id',
-                'folga.dia_semana as dia_semana',
-                'profissao.nome as profissao'
-            )
-            ->where('folga.id', $request->id)
-            ->get();
+            );
+    
+        if ($id) {
+            return $query->where('folga.id', $id)->first();
+        }
+    
+        return $query->get()->toArray();
     }
 
     public function getByIdFuncionario($request)

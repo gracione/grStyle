@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FolgasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,18 +52,18 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 //    Route::post('/tratamentos-funcionarios/alterar', [App\Http\Controllers\TratamentosFuncionariosController::class, 'alterar']);
 //    Route::post('/tratamentos-funcionarios/excluir', [App\Http\Controllers\TratamentosFuncionariosController::class, 'destroy']);
 
-    Route::get('/galeria/listar', [App\Http\Controllers\GaleriaController::class, 'listar']);
+    Route::get('/galeria', [App\Http\Controllers\GaleriaController::class, 'listar']);
     Route::post('/galeria/listar-fotos', [App\Http\Controllers\GaleriaController::class, 'fotosAlbum']);
     Route::post('/galeria/upload-foto', [App\Http\Controllers\GaleriaController::class, 'uploadFoto']);
     Route::post('/galeria/inserir', [App\Http\Controllers\GaleriaController::class, 'inserir']);
 
     Route::post('/logout', [App\Http\Controllers\API\AuthController::class, 'sair']);
     Route::post('/filtro', [App\Http\Controllers\FiltroController::class, 'listar']);
-    Route::get('/filtro/listar', [App\Http\Controllers\FiltroController::class, 'listarFiltro']);
-    Route::post('/servicos/listar', [App\Http\Controllers\ServicosController::class, 'listar']);
+    Route::get('/filtro', [App\Http\Controllers\FiltroController::class, 'listarFiltro']);
+    Route::post('/servicos', [App\Http\Controllers\ServicosController::class, 'listar']);
     Route::post('/filtro-tipo/listar-id', [App\Http\Controllers\FiltroController::class, 'listarFiltroTipoById']);
 
-    Route::post('/horarios-marcados/listar', [App\Http\Controllers\HorarioController::class, 'horariosMarcados']);
+    Route::post('/horarios-marcados', [App\Http\Controllers\HorarioController::class, 'horariosMarcados']);
     Route::post('/horarios-disponivel', [App\Http\Controllers\HorarioController::class, 'horariosDisponivel']);
     Route::post('/horario/tempo-gasto', [App\Http\Controllers\HorarioController::class, 'tempoGasto']);
     Route::post('/horario/alterar', [App\Http\Controllers\HorarioController::class, 'alterar']);
@@ -70,34 +71,38 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/horario/excluir', [App\Http\Controllers\HorarioController::class, 'desmarcar']);
     Route::post('/horario/confirmar', [App\Http\Controllers\HorarioController::class, 'confirmar']);
 
-    Route::get('/profissao/listar', [App\Http\Controllers\ProfissaoController::class, 'listar']);
+    Route::get('/profissao', [App\Http\Controllers\ProfissaoController::class, 'listar']);
     Route::post('/profissao/listar-id', [App\Http\Controllers\ProfissaoController::class, 'getById']);
     Route::post('/profissao/listar-id-funcionario', [App\Http\Controllers\ProfissaoController::class, 'getByIdFuncionario']);
     Route::post('/profissao/inserir', [App\Http\Controllers\ProfissaoController::class, 'inserir']);
     Route::post('/profissao/alterar', [App\Http\Controllers\ProfissaoController::class, 'alterar']);
     Route::post('/profissao/excluir', [App\Http\Controllers\ProfissaoController::class, 'destroy']);
 
-    Route::get('/feriados/listar', [App\Http\Controllers\FeriadoController::class, 'listar']);
+    Route::get('/feriados', [App\Http\Controllers\FeriadoController::class, 'listar']);
     Route::post('/feriados/listar-id', [App\Http\Controllers\FeriadoController::class, 'getById']);
     Route::post('/feriados/listar-mes-ano', [App\Http\Controllers\FeriadoController::class, 'listarByMesAno']);
     Route::post('/feriados/inserir', [App\Http\Controllers\FeriadoController::class, 'inserir']);
     Route::post('/feriados/alterar', [App\Http\Controllers\FeriadoController::class, 'alterar']);
     Route::post('/feriados/excluir', [App\Http\Controllers\FeriadoController::class, 'destroy']);
 
-    Route::get('/folgas/listar', [App\Http\Controllers\FolgasController::class, 'listar']);
-    Route::post('/folgas/listar-id', [App\Http\Controllers\FolgasController::class, 'getById']);
-    Route::post('/folgas/list-holidays-by-employee-id', [App\Http\Controllers\FolgasController::class, 'listHolidaysByEmployeeId']);
-    Route::post('/folgas/inserir', [App\Http\Controllers\FolgasController::class, 'inserir']);
-    Route::post('/folgas/alterar', [App\Http\Controllers\FolgasController::class, 'alterar']);
-    Route::post('/folgas/excluir', [App\Http\Controllers\FolgasController::class, 'destroy']);
 
-    Route::get('/ferias/listar', [App\Http\Controllers\FeriasController::class, 'listar']);
+    Route::get('/folgas/{id}', [FolgasController::class, 'listAction']);
+    Route::get('/folgas/', [FolgasController::class, 'listAction']);
+
+//    Route::get('/folgas', [FolgasController::class, 'listAction']);
+//    Route::post('/folgas/listar-id', [FolgasController::class, 'getById']);
+    Route::post('/folgas/list-holidays-by-employee-id', [FolgasController::class, 'listHolidaysByEmployeeId']);
+    Route::post('/folgas/inserir', [FolgasController::class, 'inserir']);
+    Route::post('/folgas/alterar', [FolgasController::class, 'alterar']);
+    Route::post('/folgas/excluir', [FolgasController::class, 'destroy']);
+
+    Route::get('/ferias', [App\Http\Controllers\FeriasController::class, 'listar']);
     Route::post('/ferias/listar-id', [App\Http\Controllers\FeriasController::class, 'getById']);
     Route::post('/ferias/excluir', [App\Http\Controllers\FeriasController::class, 'destroy']);
     Route::post('/ferias/alterar', [App\Http\Controllers\FeriasController::class, 'alterar']);
     Route::post('/ferias/inserir', [App\Http\Controllers\FeriasController::class, 'inserir']);
 
-    Route::get('/expediente/listar', [App\Http\Controllers\HorarioTrabalhoController::class, 'listar']);
+    Route::get('/expediente', [App\Http\Controllers\HorarioTrabalhoController::class, 'listar']);
     Route::post('/expediente/listar-id', [App\Http\Controllers\HorarioTrabalhoController::class, 'getById']);
     Route::post('/expediente/listar-id-funcionario', [App\Http\Controllers\HorarioTrabalhoController::class, 'getByIdFuncionario']);
     Route::post('/expediente/inserir', [App\Http\Controllers\HorarioTrabalhoController::class, 'inserir']);
@@ -107,13 +112,13 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/configuracao/dados-configuracao', [App\Http\Controllers\API\AuthController::class, 'dadosConfiguracao']);
     Route::post('/configuracoes/alterar', [App\Http\Controllers\API\AuthController::class, 'alterar']);
     Route::post('/configuracao-sistema/alterar', [App\Http\Controllers\ConfiguracaoController::class, 'alterar']);
-    Route::post('/configuracao-sistema/listar', [App\Http\Controllers\ConfiguracaoController::class, 'listar']);
+    Route::post('/configuracao-sistema', [App\Http\Controllers\ConfiguracaoController::class, 'listar']);
     Route::post('/configuracoes/enviar-imagem', [App\Http\Controllers\API\AuthController::class, 'enviarImagem'])->name('api.upload.image');
 
-    Route::get('/users/listar', [App\Http\Controllers\API\AuthController::class, 'listar']);
+    Route::get('/users', [App\Http\Controllers\API\AuthController::class, 'listar']);
 
     Route::get('/mensagens', [App\Http\Controllers\MensagemController::class, 'index']);
-    Route::post('/mensagens/listar', [App\Http\Controllers\MensagemController::class, 'listar']);
+    Route::post('/mensagens', [App\Http\Controllers\MensagemController::class, 'listar']);
     Route::post('/mensagens', [App\Http\Controllers\MensagemController::class, 'enviar']);
     Route::put('/mensagens/{id}', [App\Http\Controllers\MensagemController::class, 'alterar']);
     Route::delete('/mensagens/{id}', [App\Http\Controllers\MensagemController::class, 'destroy']);

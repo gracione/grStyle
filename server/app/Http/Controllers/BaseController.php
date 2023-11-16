@@ -19,9 +19,9 @@ abstract class BaseController extends Controller
         return $this->model->all();
     }
 
-    public function getById(Request $request)
+    public function getById($id)
     {
-        $model = $this->model->find($request->idFeriado);
+        $model = $this->model->find($id);
 
         return response()->json($model, 200);
     }

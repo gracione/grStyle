@@ -16,8 +16,6 @@ class Folgas extends Migration
         Schema::create('folga', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('dia_semana');
-            $table->integer('id_funcionario')->unsigned();
-            $table->foreign('id_funcionario')->references('id')->on('funcionario');
             $table->integer('id_usuario')->unsigned();
             $table->foreign('id_usuario')->references('id')->on('users');
         });
@@ -29,8 +27,6 @@ class Folgas extends Migration
             $table->increments('id');
             $table->date('inicio');
             $table->date('fim');
-            $table->integer('id_funcionario')->unsigned();
-            $table->foreign('id_funcionario')->references('id')->on('funcionario');
             $table->integer('id_usuario')->unsigned();
             $table->foreign('id_usuario')->references('id')->on('users');
         });
