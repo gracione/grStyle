@@ -29,10 +29,11 @@ class ProfissaoController extends BaseController
         return $this->model->alterar($request);
     }
 
-    public function getById(Request $request)
+    public function getById($id)
     {
-        return $this->model->getById($request);
+        return $this->model->getById($id);
     }
+
     public function getByIdFuncionario(Request $request)
     {
         return $this->model->getByIdFuncionario($request);

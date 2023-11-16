@@ -25,13 +25,15 @@ class TratamentosController extends BaseController
     {
         return $this->tratamentos->listar();
     }
-    public function getById(Request $request)
+
+    public function getById($id)
     {
         return [
             'profissoes' => $this->profissao->listar(),
-            'tratamentos' => $this->tratamentos->getById($request)
+            'tratamentos' => $this->tratamentos->getById($id)
         ];
     }
+
     public function getByIdProfissao(Request $request)
     {
         return $this->tratamentos->getByIdProfissao($request);

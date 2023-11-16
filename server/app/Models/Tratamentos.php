@@ -50,9 +50,8 @@ class Tratamentos extends Model
         return $select->toArray();
     }
 
-    public static function getById($request)
+    public static function getById($id)
     {
-        $id = $request->id ?? $request;
         $select = DB::table('tratamento')
             ->select('tratamento.nome as nome', 'tratamento.tempo_gasto as tempo_gasto', 'tratamento.id as id', 'tratamento.id_profissao as id_profissao')
             ->where('tratamento.id', '=', $id)

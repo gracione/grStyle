@@ -42,15 +42,15 @@ const Menu = () => {
                 Profissão
               </Nav.Link>
               <NavDropdown className="m-1" title="Serviços">
-                <NavDropdown.Item>
-                  <Nav.Link
+                {/* <NavDropdown.Item> */}
+                  {/* <Nav.Link
                     className="text-dark"
                     as={Link}
                     to={"/servicos-funcionario"}
                   >
-                    Funcionario
-                  </Nav.Link>
-                </NavDropdown.Item>
+                    Funcionario (Em construção)
+                  </Nav.Link> */}
+                {/* </NavDropdown.Item> */}
                 <NavDropdown.Item>
                   <Nav.Link
                     className="text-dark"

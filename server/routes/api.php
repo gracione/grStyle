@@ -38,9 +38,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/funcionarios/excluir', [App\Http\Controllers\FuncionariosController::class, 'destroyByIdUsuario']);
     Route::post('/funcionarios/excluir-id', [App\Http\Controllers\FuncionariosController::class, 'destroyByIdFuncionario']);
 
-    Route::post('/servicos-profissao/listar-id-profissao', [App\Http\Controllers\TratamentosController::class, 'getByIdProfissao']);
-    Route::post('/servicos-profissao/listar-id', [App\Http\Controllers\TratamentosController::class, 'getById']);
-    Route::get('/servicos-profissao/listar', [App\Http\Controllers\TratamentosController::class, 'listar']);
+    Route::get('/servicos-profissao/listar-id-profissao', [App\Http\Controllers\TratamentosController::class, 'getByIdProfissao']);
+    Route::get('/servicos-profissao', [App\Http\Controllers\TratamentosController::class, 'getById']);
+    Route::get('/servicos-profissao', [App\Http\Controllers\TratamentosController::class, 'listar']);
     Route::post('/servicos-profissao/inserir', [App\Http\Controllers\TratamentosController::class, 'inserir']);
     Route::post('/servicos-profissao/alterar', [App\Http\Controllers\TratamentosController::class, 'alterar']);
     Route::post('/servicos-profissao/excluir', [App\Http\Controllers\TratamentosController::class, 'destroy']);
@@ -88,7 +88,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('/folgas/{id}', [FolgasController::class, 'listAction']);
     Route::get('/folgas/', [FolgasController::class, 'listAction']);
-
 //    Route::get('/folgas', [FolgasController::class, 'listAction']);
 //    Route::post('/folgas/listar-id', [FolgasController::class, 'getById']);
     Route::post('/folgas/list-holidays-by-employee-id', [FolgasController::class, 'listHolidaysByEmployeeId']);

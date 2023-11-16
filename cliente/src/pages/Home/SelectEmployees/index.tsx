@@ -31,9 +31,7 @@ export default function SelectEmployees(props: any) {
 
   useEffect(() => {
     api
-      .post("/servicos-profissao/listar-id-profissao", {
-        id: idProfissao,
-      })
+      .get("/servicos-profissao/listar-id-profissao"+idProfissao)
       .then((response) => setTratamentoPorProfissao(response.data));
   }, [idProfissao, formActive,funcionarioSelecionado]);
 

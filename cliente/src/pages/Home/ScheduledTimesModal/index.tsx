@@ -15,7 +15,7 @@ export default function HorariosMarcado() {
 
   useEffect(() => {
     try {
-      api.post('horarios-marcados/listar', {
+      api.post('horarios-marcados', {
         idUsuario: localStorage.getItem("id_usuario"),
         tipoUsuario: localStorage.getItem("tipo_usuario"),
         dataInicio,
