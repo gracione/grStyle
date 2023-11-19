@@ -177,25 +177,25 @@ class Horario extends Model
     public function horarioPorDia($request)
     {
         $select = DB::table('horario')
-            ->select(DB::raw(
-                'TIME_FORMAT(horario.horario_inicio, "%H:%i") as horario,
-                    TIME_FORMAT(horario.horario_inicio, "%H:%i") as horario_inicio,
-                    DATE_FORMAT(horario.horario_inicio, " %d %M de %Y") as data,
-                users.nome as cliente,
-                users.numero as telefone,
-                func.nome as funcionario,
-                t.nome as tratamento,
-                horario.confirmado as confirmado,
-                horario.nome_cliente as nome_cliente,
-                horario.id as idHorario',
-            ))
-            ->join('users', 'users.id', '=', 'horario.id_cliente')
-            ->join('funcionario', 'funcionario.id', '=', 'horario.id_funcionario')
-            ->join('users as func', 'func.id', '=', 'funcionario.id_usuario')
-            ->join('tratamento as t', 't.id', '=', 'horario.id_tratamento')
-            ->whereDate('horario.horario_inicio', '>=', $request->dataInicio)
-            ->whereDate('horario.horario_inicio', '<=', $request->dataFim);
-
+        ->select(DB::raw(
+            'TO_CHAR(horario.horario_inicio, \'HH24:MI\') as horario,
+            TO_CHAR(horario.horario_inicio, \'HH24:MI\') as horario_inicio,
+            TO_CHAR(horario.horario_inicio, \'DD Mon YYYY\') as data,
+            users.nome as cliente,
+            users.numero as telefone,
+            func.nome as funcionario,
+            t.nome as tratamento,
+            horario.confirmado as confirmado,
+            horario.nome_cliente as nome_cliente,
+            horario.id as idHorario'
+        ))
+        ->join('users', 'users.id', '=', 'horario.id_cliente')
+        ->join('funcionario', 'funcionario.id', '=', 'horario.id_funcionario')
+        ->join('users as func', 'func.id', '=', 'funcionario.id_usuario')
+        ->join('tratamento as t', 't.id', '=', 'horario.id_tratamento')
+        ->where('horario.horario_inicio', '>=', $request->dataInicio)
+        ->where('horario.horario_inicio', '<=', $request->dataFim);
+    
         if ($request->tipoUsuario == Constantes::CLIENTE) {
             $select = $select
                 ->where('horario.id_cliente', $request->idUsuario)->get();

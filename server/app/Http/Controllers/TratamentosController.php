@@ -34,9 +34,9 @@ class TratamentosController extends BaseController
         ];
     }
 
-    public function getByIdProfissao(Request $request)
+    public function servicesByIdProfissao(Request $request)
     {
-        return $this->tratamentos->getByIdProfissao($request);
+        return $this->tratamentos->getByIdProfession($request->id);
     }
     public function inserir(Request $request)
     {

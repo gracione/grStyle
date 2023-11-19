@@ -38,19 +38,12 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/funcionarios/excluir', [App\Http\Controllers\FuncionariosController::class, 'destroyByIdUsuario']);
     Route::post('/funcionarios/excluir-id', [App\Http\Controllers\FuncionariosController::class, 'destroyByIdFuncionario']);
 
-    Route::get('/servicos-profissao/listar-id-profissao', [App\Http\Controllers\TratamentosController::class, 'getByIdProfissao']);
+    Route::get('/servicos-profissao/listar-id-profissao', [App\Http\Controllers\TratamentosController::class, 'servicesByIdProfissao']);
     Route::get('/servicos-profissao', [App\Http\Controllers\TratamentosController::class, 'getById']);
     Route::get('/servicos-profissao', [App\Http\Controllers\TratamentosController::class, 'listar']);
     Route::post('/servicos-profissao/inserir', [App\Http\Controllers\TratamentosController::class, 'inserir']);
     Route::post('/servicos-profissao/alterar', [App\Http\Controllers\TratamentosController::class, 'alterar']);
     Route::post('/servicos-profissao/excluir', [App\Http\Controllers\TratamentosController::class, 'destroy']);
-
-//    Route::post('/tratamentos-funcionarios/listar-id-profissao', [App\Http\Controllers\TratamentosFuncionariosController::class, 'getByIdProfissao']);
-//    Route::post('/tratamentos-funcionarios/listar-id', [App\Http\Controllers\TratamentosFuncionariosController::class, 'getById']);
-//    Route::get('/tratamentos-funcionarios/listar', [App\Http\Controllers\TratamentosFuncionariosController::class, 'listar']);
-//    Route::post('/tratamentos-funcionarios/inserir', [App\Http\Controllers\TratamentosFuncionariosController::class, 'inserir']);
-//    Route::post('/tratamentos-funcionarios/alterar', [App\Http\Controllers\TratamentosFuncionariosController::class, 'alterar']);
-//    Route::post('/tratamentos-funcionarios/excluir', [App\Http\Controllers\TratamentosFuncionariosController::class, 'destroy']);
 
     Route::get('/galeria', [App\Http\Controllers\GaleriaController::class, 'listar']);
     Route::post('/galeria/listar-fotos', [App\Http\Controllers\GaleriaController::class, 'fotosAlbum']);

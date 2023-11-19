@@ -30,8 +30,7 @@ export default function SelectEmployees(props: any) {
   let urlNomeCliente = "cliente/"+nomeCliente || "";
 
   useEffect(() => {
-    api
-      .get("/servicos-profissao/listar-id-profissao"+idProfissao)
+      api.get("/servicos-profissao/listar-id-profissao/"+idProfissao)
       .then((response) => setTratamentoPorProfissao(response.data));
   }, [idProfissao, formActive,funcionarioSelecionado]);
 
