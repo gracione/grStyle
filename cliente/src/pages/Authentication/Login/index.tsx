@@ -58,7 +58,7 @@ const Login = () => {
     <Container>
       <div className='w-100 d-flex justify-content-between'>
         <div className='h-50 d-flex justify-content-around align-self-center'>
-          <div className='text-white' >Studio Realize</div>
+          <div className='text-white' >GrStyle</div>
           <GiFairyWand />
         </div>
         <div className='w-10 h-10 input d-flex justify-content-around'>
