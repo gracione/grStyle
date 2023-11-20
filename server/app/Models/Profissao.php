@@ -5,20 +5,27 @@ namespace App\Models;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Profissao extends Model
 {
     protected $table = 'profissao';
 
-    public function listar()
+    public function list($id = false)
     {
-        return $this->select('nome as profissao', 'id')->get()->toArray();
+        $query = DB::table('profissao')
+        ->select('nome as profissao', 'id');
+        if ($id) {
+            return $query->where('id', $id)->first();
+        }
+
+        return $query->get()->toArray();
     }
 
-    public function getById($request)
-    {
-        return $this->select('nome')->where('id', $request->id)->get()->toArray();
-    }
+    // public function getById($request)
+    // {
+    //     return $this->select('nome')->where('id', $request->id)->get()->toArray();
+    // }
 
     public function getByIdFuncionario($request)
     {

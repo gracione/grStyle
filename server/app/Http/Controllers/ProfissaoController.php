@@ -19,9 +19,9 @@ class ProfissaoController extends BaseController
         return $this->model->inserir($request);
     }
 
-    public function listar()
+    public function listAction($id = false)
     {
-        return $this->model->listar();
+        return $this->model->list($id);
     }
 
     public function alterar(Request $request)
@@ -29,10 +29,10 @@ class ProfissaoController extends BaseController
         return $this->model->alterar($request);
     }
 
-    public function getById($id)
-    {
-        return $this->model->getById($id);
-    }
+    // public function getById($id)
+    // {
+    //     return $this->model->getById($id);
+    // }
 
     public function getByIdFuncionario(Request $request)
     {
