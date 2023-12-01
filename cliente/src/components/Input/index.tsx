@@ -7,21 +7,20 @@ interface InputProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   required: boolean;
   height?: string;
+  width?: string;
 }
 
-const Input: React.FC<InputProps> = ({ name, placeholder, value, onChange, required, height = '30px' }) => {
+const Input: React.FC<InputProps> = ({ name, placeholder, value, onChange, required, height = '60px', width = '500px' }) => {
   return (
-    <div className='h-10 mb-1 input'>
     <input
       type="text"
       placeholder={placeholder}
       value={value}
       onChange={onChange}
       required={required}
-      style={{ height }}
+      style={{ height, width}}
       name={name}
       />
-      </div>
   );
 };
 
