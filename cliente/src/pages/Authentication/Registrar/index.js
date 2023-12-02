@@ -84,6 +84,25 @@ export default function Registrar() {
     }
   }
 
+  function validatePassword() {
+    const message = document.getElementById('passwordMatchMessage');
+
+    if (password.length < 8) {
+        message.style.color = 'red';
+        message.innerHTML = 'A senha deve ter pelo menos 8 caracteres. Tente novamente.';
+        return;
+    }
+
+    if (password === confirmPassword) {
+        message.style.color = 'green';
+        message.innerHTML = 'As senhas são iguais!';
+        return;
+    }
+
+    message.style.color = 'red';
+    message.innerHTML = 'As senhas não coincidem. Tente novamente.';
+  }
+
   return (
     <div className="registrar">
       <form onSubmit={efetuarRegister}>
@@ -105,16 +124,14 @@ export default function Registrar() {
         />
         {erroNome}
 
-        <div className='h-10 mb-1 input'>
-          <InputMask
-            className='rounded'
-            mask="(99) 9 9999-9999"
-            placeholder="Phone"
-            value={numero}
-            onChange={(e) => setNumero(e.target.value)}
-            required
-          />
-        </div>
+        <InputMask
+          className='rounded'
+          mask="(99) 9 9999-9999"
+          placeholder="Phone"
+          value={numero}
+          onChange={(e) => setNumero(e.target.value)}
+          required
+        />
         {erroNumero}
 
         <select
@@ -143,7 +160,9 @@ export default function Registrar() {
           placeholder="Password"
           value={password}
           type="password"
+          id="password"
           onChange={(e) => setPassword(e.target.value)}
+          onKeyUp={validatePassword}
           required
         />
         {erroPassword}
@@ -151,12 +170,14 @@ export default function Registrar() {
         <Input
           name="confirmPassword"
           placeholder="Confirm Password"
+          id="confirmPassword"
           value={confirmPassword}
           type="password"
           onChange={(e) => setConfirmPassword(e.target.value)}
+          onKeyUp={validatePassword}
           required
         />
-
+        <p id="passwordMatchMessage"></p>
         <button className="button" type="submit">Register</button>
       </form>
       <img className='logo' src='logo.svg' alt="Logo" />

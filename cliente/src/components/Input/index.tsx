@@ -6,21 +6,32 @@ interface InputProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   required: boolean;
+  onKeyUp?: () => void;
   height?: string;
   width?: string;
 }
 
-const Input: React.FC<InputProps> = ({ name, placeholder, value, onChange, required, height = '60px', width = '500px' }) => {
+const Input: React.FC<InputProps> = ({
+  name,
+  placeholder,
+  value,
+  onChange,
+  required,
+  onKeyUp,
+  height = '60px',
+  width = '500px',
+}) => {
   return (
     <input
       type="text"
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      onKeyUp={onKeyUp}
       required={required}
-      style={{ height, width}}
+      style={{ height, width }}
       name={name}
-      />
+    />
   );
 };
 
