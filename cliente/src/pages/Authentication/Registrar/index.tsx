@@ -5,6 +5,7 @@ import Input from 'components/Input'; // Adjust the import based on your actual 
 import InputMask from 'react-input-mask';
 import api from 'services/api';
 import { Container } from './styles';
+import BackButton from 'components/BackButton';
 
 function validatePassword(password: string, confirmPassword: string) {
   const message = document.getElementById('passwordMatchMessage');
@@ -76,9 +77,7 @@ export default function Registrar() {
     <Container>
       <form onSubmit={efetuarRegister}>
         <h4 className='text-primary d-flex justify-content-between'>
-          <Link className="bg-primary text-white rounded-circle voltar" to="/login">
-            <FiArrowLeft size={20} />
-          </Link>
+          <BackButton returnUrl='/login' />
           <div className='p-2 w-75'>
             Register Client
           </div>
@@ -119,11 +118,11 @@ export default function Registrar() {
         <Input
           name="password"
           placeholder="Password"
-          value={password}  
+          value={password}
           //id="password"
           type="password"
           onChange={(e) => setPassword(e.target.value)}
-          onKeyUp={() => validatePassword(password,confirmPassword)}
+          onKeyUp={() => validatePassword(password, confirmPassword)}
           required
         />
 
@@ -134,7 +133,7 @@ export default function Registrar() {
           value={confirmPassword}
           type="password"
           onChange={(e) => setConfirmPassword(e.target.value)}
-          onKeyUp={() => validatePassword(password,confirmPassword)}
+          onKeyUp={() => validatePassword(password, confirmPassword)}
           required
         />
 
