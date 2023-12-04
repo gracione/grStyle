@@ -30,20 +30,19 @@ class AuthController extends Controller
     {
         return $this->users->listar($request);
     }
-///
-    public function registrarClienteOld(Request $request)
+    public function registrarCliente(Request $request)
     {
-        $teste=1;
+        echo "test";
         $validator = Validator::make($request->all(), [
             'nome' => 'required|string|max:255',
             'numero' => 'required|string|max:255',
             'id_sexo' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:3'
+            'password' => 'required|string|min:3',
         ]);
 
         if ($validator->fails()) {
-            return $validator->errors();
+            return response()->json(['error' => $validator->errors()], 422);
         }
 
         $user = User::create([
@@ -53,59 +52,25 @@ class AuthController extends Controller
             'id_sexo' => $request->id_sexo,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'img_url' => './perfil/sem_usuario.png'
+            'img_url' => './perfil/sem_usuario.png',
         ]);
 
         DB::table('cliente')->insert([
-            'id_usuario' => $user['id']
+            'id_usuario' => $user->id,
         ]);
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        return response()->json(['tipo_usuario' => $user['tipo_usuario'], 'nome' => $user['nome'], 'id_usuario' => $user['id'], 'data' => $user, 'token' => $token, 'token_type' => 'Bearer',]);
+        return response()->json([
+            'tipo_usuario' => $user->tipo_usuario,
+            'nome' => $user->nome,
+            'id_usuario' => $user->id,
+            'data' => $user,
+            'token' => $token,
+            'token_type' => 'Bearer',
+        ]);
     }
-///
-public function registrarCliente(Request $request)
-{
-    echo "test";
-    $validator = Validator::make($request->all(), [
-        'nome' => 'required|string|max:255',
-        'numero' => 'required|string|max:255',
-        'id_sexo' => 'required|string|max:255',
-        'email' => 'required|string|email|max:255|unique:users',
-        'password' => 'required|string|min:3',
-    ]);
-
-    if ($validator->fails()) {
-        return response()->json(['error' => $validator->errors()], 422);
-    }
-
-    $user = User::create([
-        'nome' => $request->nome,
-        'numero' => $request->numero,
-        'tipo_usuario' => '3',
-        'id_sexo' => $request->id_sexo,
-        'email' => $request->email,
-        'password' => Hash::make($request->password),
-        'img_url' => './perfil/sem_usuario.png',
-    ]);
-
-    DB::table('cliente')->insert([
-        'id_usuario' => $user->id,
-    ]);
-
-    $token = $user->createToken('auth_token')->plainTextToken;
-
-    return response()->json([
-        'tipo_usuario' => $user->tipo_usuario,
-        'nome' => $user->nome,
-        'id_usuario' => $user->id,
-        'data' => $user,
-        'token' => $token,
-        'token_type' => 'Bearer',
-    ]);
-}
-///
+    ///
     public function login(Request $request)
     {
         if (!empty($request['googleId'])) {
@@ -124,7 +89,7 @@ public function registrarCliente(Request $request)
                     'email' => $request['email'],
                     'password' => Hash::make('123'),
                     'id_google' => $idGoogle,
-                    'img_url' => $request['imageUrl']??null
+                    'img_url' => $request['imageUrl'] ?? null
                 ]);
 
                 DB::table('cliente')->insert([
