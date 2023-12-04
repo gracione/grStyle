@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWhatsapp,faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
-import Funcionarios from "./SelectEmployees";
-import HorarioMarcado from "./ScheduledTimesModal";
-import { AgendarHorario, Container, HorariosMarcados } from "./styles";
-import { ADM, CLIENTE, FUNCIONARIO } from "../../constantes";
+import { faWhatsapp, faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
+import Funcionarios from './SelectEmployees';
+import HorarioMarcado from './ScheduledTimesModal';
+import { AgendarHorario, Container, HorariosMarcados } from './styles';
+import { ADM, CLIENTE, FUNCIONARIO } from 'constantes/index';
+import Input from "components/Input";
 
 export default function Home() {
   const { tipo_usuario } = localStorage;
@@ -49,12 +50,13 @@ export default function Home() {
             )}
 
             {tipo_usuario !== CLIENTE && (
-              <input
+              <Input
+                name="nome"
+                placeholder="Digite o nome do cliente"
                 type="text"
                 onChange={(e) => setNomeCliente(e.target.value)}
-                placeholder="Digite o nome do cliente"
-                required
-              />
+                required />
+
             )}
             <hr />
           </div>

@@ -4,7 +4,7 @@ import { Container } from './styles';
 interface InputProps {
   name: string;
   placeholder: string;
-  value: string;
+  value?: string; // Adicione o tipo e torne obrigatório
   type?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   required: boolean;
@@ -16,7 +16,7 @@ interface InputProps {
 const Input: React.FC<InputProps> = ({
   name,
   placeholder,
-  value,
+  value, // Adicione a desestruturação da propriedade value
   type = 'text',
   onChange,
   required,
