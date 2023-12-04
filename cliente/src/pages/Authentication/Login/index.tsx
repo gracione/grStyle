@@ -8,6 +8,7 @@ import { GiFairyWand } from "react-icons/gi";
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { gapi } from 'gapi-script';
 import api from 'services/api';
+import Input from 'components/Input';
 
 const GOOGLE_CLIENT_ID = "959861611664-n7ql4k5hf128e48qbsspdhu0vdkd3sar.apps.googleusercontent.com";
 
@@ -70,32 +71,23 @@ const Login = () => {
       </div>
       <div className='w-100 h-75 d-flex justify-content-center'>
         <form onSubmit={fazerLogin}>
-            <div className='input h-20'>
-              <FaUserAlt />
-              <input
-                className='rounded w-100'
-                id="email"
-                name='email'
-                type="email"
-                placeholder="exemplo@exemplo.com"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div className='input h-20'>
-                <HiKey />
-              <input
-                className='rounded w-100'
-                id="password"
-                name='password'
-                type="password"
-                placeholder="********"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                required
-              />
-            </div>
+        <Input
+          name="email"
+          placeholder="exemplo@exemplo.com"
+          value={email}
+          type="email"
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+            <Input
+            //id="password"
+            name='password'
+            type="password"
+            placeholder="********"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            required
+          />
           <button className="rounded bg-dark h-20" type="submit">Entrar</button>
           <div className=''>
             <GoogleLogin
@@ -108,7 +100,7 @@ const Login = () => {
             />
           </div>
         </form>
-        </div>
+      </div>
     </Container>
   );
 }
