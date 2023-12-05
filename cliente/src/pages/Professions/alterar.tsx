@@ -12,11 +12,10 @@ export default function AlterarProfissao() {
 
   useEffect(() => {
     api
-      .post("/profissao/listar-id", {
-        id: idProfissao,
-      })
-      .then((response) => setListagem(response.data[0]));
+      .get("/profissao/"+idProfissao)
+      .then((response) => setListagem(response.data));
   }, []);
+
   return (
     <Header>
       <Conteudo>
@@ -26,7 +25,7 @@ export default function AlterarProfissao() {
           <input
             name="nome"
             placeholder="..."
-            defaultValue={listagem["nome"]}
+            defaultValue={listagem.profissao}
             onChange={(e) => setNome(e.target.value)}
             required
           />
