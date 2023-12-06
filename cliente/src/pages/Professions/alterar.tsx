@@ -1,4 +1,3 @@
-import Menu from "../../components/Menu";
 import { Container, Conteudo, Header } from "styles/global";
 import Alterar from "../../components/UpdateModal";
 import { useState, useEffect } from "react";
@@ -12,7 +11,7 @@ export default function AlterarProfissao() {
 
   useEffect(() => {
     api
-      .get("/profissao/"+idProfissao)
+    .get("/profissao/"+idProfissao)
       .then((response) => setListagem(response.data));
   }, []);
 

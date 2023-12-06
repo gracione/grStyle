@@ -1,8 +1,8 @@
-import { useState } from "react";
 import InputMask from "react-input-mask";
 import { AdicionarProfissao } from "../styles";
 import Inserir from "../../../components/SaveModal";
-import BuscarDadosApi from "../../../services/util";
+import { useState, useEffect } from "react";
+import api from "services/api";
 
 export default function InserirFuncionario() {
   const [inicioExpediente, setInicioExpediente] = useState("07:00");
@@ -18,7 +18,9 @@ export default function InserirFuncionario() {
   const [profissoesCadastradas, setProfissoesCadastradas] = useState([]);
   const profissoesCadastradasAux: any = profissoesCadastradas;
 
-  const profissoes = BuscarDadosApi("servicos-profissao", "listar");
+  const [profissoes, setProfissoes] = useState([]);
+
+
   const [quantidadeProfissoes, setQuantidadeProfissoes] = useState(1);
 
   function adicionarProfissao(valor: any, indice: any) {

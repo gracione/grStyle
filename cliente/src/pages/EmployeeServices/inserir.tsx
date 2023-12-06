@@ -1,13 +1,19 @@
 import { AdicionarItem, Conteudo, Header } from "styles/global";
-import { useState } from "react";
-import BuscarDadosApi from "../../services/util";
 import Inserir from "../../components/SaveModal";
+import { useState, useEffect } from "react";
+import api from "services/api";
 
 export default function InserirTratamento() {
   const [tratamento, setTratamento] = useState("");
   const [tempoGasto, setTempoGasto] = useState("");
   const [idProfissao, setIdProfissao] = useState("");
-  const profissoes = BuscarDadosApi("profissao", "listar");
+  const [profissoes, setProfissoes] = useState([]);
+
+  useEffect(() => {
+    api.get("/profissao").then((response) => setProfissoes(response.data));
+  }, []);
+
+
   const [matrix, setMatrix] = useState(
     Array.from({ length: 1 }, () => Array.from({ length: 1 }, () => []))
   );
@@ -65,9 +71,11 @@ export default function InserirTratamento() {
           required
         />
         <select onChange={(e) => setIdProfissao(e.target.value)} required>
-          <option value={0}>Escolha a Profissão</option>
+          <option value="">Escolha a Profissão</option>
           {profissoes.map((element: any) => (
-            <option value={element.id}>{element.profissão}</option>
+            <option key={element.id} value={element.id}>
+              {element.profissão}
+            </option>
           ))}
         </select>
 
