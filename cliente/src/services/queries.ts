@@ -3,6 +3,7 @@ import api from 'services/api';
 export const consultarDados = async (parametros: string): Promise<any> => {
   try {
     const resposta = await api.get(parametros);
+    console.log(resposta);
     return resposta.data;
   } catch (erro) {
     console.error('Erro na consulta de dados:', erro);

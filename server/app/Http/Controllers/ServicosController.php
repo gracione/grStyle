@@ -20,8 +20,8 @@ class ServicosController extends BaseController
         return new Servicos();
     }
 
-    public function listar(Request $request)
-    {
-        return $this->servicos->listar($request);
-    }
+//    public function listar(Request $request)
+//    {
+//        return $this->servicos->listar($request);
+//    }
 }

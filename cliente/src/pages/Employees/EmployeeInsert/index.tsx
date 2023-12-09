@@ -20,6 +20,9 @@ export default function InserirFuncionario() {
 
   const [profissoes, setProfissoes] = useState([]);
 
+  useEffect(() => {
+    api.get("/profissao").then((response) => setProfissoes(response.data));
+  }, []);
 
   const [quantidadeProfissoes, setQuantidadeProfissoes] = useState(1);
 
