@@ -4,21 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Profession;
 use Illuminate\Http\Request;
-use App\Models\Tratamentos;
+use App\Models\ServicesProfession;
 
-class TratamentosController extends BaseController
+class ServicesProfessionController extends BaseController
 {
     public $tratamentos;
     public $profession;
     public function __construct()
     {
-        $this->tratamentos = new Tratamentos();
+        $this->tratamentos = new ServicesProfession();
         $this->profession = new Profession();
     }
 
     protected function getModel()
     {
-        return new Tratamentos();
+        return new ServicesProfession();
     }
 
     public function listar()

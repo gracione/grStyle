@@ -38,7 +38,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/profession', [ProfessionController::class, 'store']);
     Route::put('/profession/{id}', [ProfessionController::class, 'update']);
     Route::delete('/profession/{id}', [ProfessionController::class, 'destroy']);
-    Route::post('/profession/list-id-employee', [ProfessionController::class, 'getByIdEmployee']);
+    //Route::post('/profession/list-id-employee', [ProfessionController::class, 'getByIdEmployee']);
     
     // Services and Professions/Serviços e Profissões
 //    Route::get('/services-profession', [App\Http\Controllers\ServicesProfessionController::class, 'index']);

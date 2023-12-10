@@ -21,7 +21,7 @@ class Horario extends Migration
             $table->integer('id_cliente')->unsigned();
             $table->foreign('id_cliente')->references('id')->on('users');
             $table->integer('id_tratamento')->unsigned();
-            $table->foreign('id_tratamento')->references('id')->on('tratamento');
+            $table->foreign('id_tratamento')->references('id')->on('services_profession');
             $table->integer('id_funcionario')->unsigned();
             $table->foreign('id_funcionario')->references('id')->on('funcionario');
             $table->boolean('confirmado');

@@ -184,7 +184,7 @@ class Horario extends Model
             users.name as cliente,
             users.number as telefone,
             func.name as funcionario,
-            t.name as tratamento,
+            t.name as services_profession,
             horario.confirmado as confirmado,
             horario.nome_cliente as nome_cliente,
             horario.id as idHorario'
@@ -192,7 +192,7 @@ class Horario extends Model
         ->join('users', 'users.id', '=', 'horario.id_cliente')
         ->join('funcionario', 'funcionario.id', '=', 'horario.id_funcionario')
         ->join('users as func', 'func.id', '=', 'funcionario.id_usuario')
-        ->join('tratamento as t', 't.id', '=', 'horario.id_tratamento')
+        ->join('services_profession as t', 't.id', '=', 'horario.id_tratamento')
         ->where('horario.horario_inicio', '>=', $request->dataInicio)
         ->where('horario.horario_inicio', '<=', $request->dataFim);
     

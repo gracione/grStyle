@@ -81,8 +81,8 @@ class HorarioController extends BaseController
 
     public function tempoGasto(Request $request)
     {
-        return $request->filtros == 0 && $request->tratamento == 0 ? 0 :
-            Util::calculateTimeSpent($request->filtros, $request->tratamento);
+        return $request->filtros == 0 && $request->servicesProfession == 0 ? 0 :
+            Util::calculateTimeSpent($request->filtros, $request->servicesProfession);
     }
 
     public function horariosDisponivel(Request $request)

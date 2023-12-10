@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class Tratamentos extends Migration
+class CreateServicesProfession extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +14,12 @@ class Tratamentos extends Migration
      */
     public function up()
     {
-        Schema::create('tratamento', function (Blueprint $table) {
+        Schema::create('services_profession', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('tempo_gasto');
-            $table->integer('id_profissao')->unsigned();
-            $table->foreign('id_profissao')->references('id')->on('profession');
+            $table->integer('time_spent');
+            $table->integer('id_profession')->unsigned();
+            $table->foreign('id_profession')->references('id')->on('profession');
         });
     }
 
@@ -30,6 +30,6 @@ class Tratamentos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tratamentos');
+        Schema::dropIfExists('services_profession');
     }
 }
