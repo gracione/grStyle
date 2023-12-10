@@ -21,7 +21,7 @@ class Folgas extends Migration
         });
         Schema::create('semana', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
+            $table->string('name');
         });
         Schema::create('ferias', function (Blueprint $table) {
             $table->increments('id');

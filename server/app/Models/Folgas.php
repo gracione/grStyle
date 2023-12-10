@@ -19,14 +19,14 @@ class Folgas extends Model
         $query = DB::table('folga')
             ->join('users', 'users.id', '=', 'folga.id_usuario')
             ->join('funcionario', 'funcionario.id_usuario', '=', 'folga.id_usuario')
-            ->join('profissao', 'funcionario.id_profissao', '=', 'profissao.id')
+            ->join('profession', 'funcionario.id_profissao', '=', 'profession.id')
             ->join('semana', 'semana.id', '=', 'folga.dia_semana')
             ->select(
-                'users.nome as funcionario',
-                'semana.nome as folga',
+                'users.name as funcionario',
+                'semana.name as folga',
                 'folga.id as id',
                 'folga.dia_semana as dia_semana',
-                'profissao.nome as profissao'
+                'profession.name as profession'
             );
     
         if ($id) {

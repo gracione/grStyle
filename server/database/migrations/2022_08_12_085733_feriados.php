@@ -15,7 +15,7 @@ class Feriados extends Migration
     {
         Schema::create('feriados', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
+            $table->string('name');
             $table->date('data');
         });
     }

@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Profissao;
+use App\Models\Profession;
 
-class ProfissaoController extends BaseController
+class ProfessionController extends BaseController
 {
-    public $profissao;
+    public $profession;
 
     protected function getModel()
     {
-        return new Profissao();
+        return new Profession();
     }
 
     public function inserir(Request $request)
@@ -22,8 +22,8 @@ class ProfissaoController extends BaseController
     public function listAction($id = false)
     {
         return $this->model->list($id);
+        
     }
-
     public function alterar(Request $request)
     {
         return $this->model->alterar($request);
@@ -38,10 +38,10 @@ class ProfissaoController extends BaseController
     {
         return $this->model->getByIdFuncionario($request);
     }
-    public function destroy(Request $request)
-    {
-        $profissao = $this->model->find($request->id);
-        return $profissao->delete($request->id);
-    }
+    //public function destroy(Request $request)
+    //{
+    //    $profession = $this->model->find($request->id);
+    //    return $profession->delete($request->id);
+    //}
 
 }

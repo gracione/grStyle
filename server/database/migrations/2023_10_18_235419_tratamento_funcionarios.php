@@ -15,7 +15,7 @@ class TratamentoFuncionarios extends Migration
     {
         Schema::create('tratamento_funcionarios', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
+            $table->string('name');
             $table->integer('tempo_gasto');
             $table->integer('id_funcionario')->unsigned();
             $table->foreign('id_funcionario')->references('id')->on('funcionario');

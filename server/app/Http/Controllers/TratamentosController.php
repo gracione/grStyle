@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profissao;
+use App\Models\Profession;
 use Illuminate\Http\Request;
 use App\Models\Tratamentos;
 
 class TratamentosController extends BaseController
 {
     public $tratamentos;
-    public $profissao;
+    public $profession;
     public function __construct()
     {
         $this->tratamentos = new Tratamentos();
-        $this->profissao = new Profissao();
+        $this->profession = new Profession();
     }
 
     protected function getModel()
@@ -29,7 +29,7 @@ class TratamentosController extends BaseController
     public function getById($id)
     {
         return [
-            'profissoes' => $this->profissao->listar(),
+            'profissoes' => $this->profession->listar(),
             'tratamentos' => $this->tratamentos->getById($id)
         ];
     }

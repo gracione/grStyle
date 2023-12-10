@@ -15,7 +15,7 @@ class Estabelecimento extends Migration
     {
         Schema::create('estabelecimento', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
+            $table->string('name');
             $table->integer('id_proprietario')->unsigned();
             $table->foreign('id_proprietario')->references('id')->on('users');
         });

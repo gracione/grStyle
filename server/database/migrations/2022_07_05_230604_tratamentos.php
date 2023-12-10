@@ -16,10 +16,10 @@ class Tratamentos extends Migration
     {
         Schema::create('tratamento', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
+            $table->string('name');
             $table->integer('tempo_gasto');
             $table->integer('id_profissao')->unsigned();
-            $table->foreign('id_profissao')->references('id')->on('profissao');
+            $table->foreign('id_profissao')->references('id')->on('profession');
         });
     }
 

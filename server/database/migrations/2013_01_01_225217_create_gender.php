@@ -3,8 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
-class Profissoes extends Migration
+class CreateGender extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +14,16 @@ class Profissoes extends Migration
      */
     public function up()
     {
-        Schema::create('profissao', function (Blueprint $table) {
+        Schema::create('gender', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
-            $table->date('created_at');
-            $table->date('updated_at');
+            $table->string('name');
+            $table->timestamps();
         });
+        Schema::create('user_type', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+        });
+
     }
 
     /**
@@ -28,6 +33,6 @@ class Profissoes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profissao');
+        Schema::dropIfExists('gender');
     }
 }

@@ -10,6 +10,6 @@ class Estabelecimento extends Model
     use HasFactory;
     protected $fillable = [
         'id',
-        'nome',
+        'name',
     ];
 }

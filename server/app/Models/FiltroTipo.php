@@ -17,10 +17,10 @@ class FiltroTipo extends Model
             ->where('filtro_tipo.id_tratamento', '=', $id)
             ->select(
                 'filtro.id as id',
-                'filtro.nome as nome',
+                'filtro.name as name',
                 'filtro.porcentagem_tempo as porcentagem_tempo',
                 'filtro.id_filtro_tipo as id_filtro_tipo',
-                'filtro_tipo.nome as nome_filtro_tipo',
+                'filtro_tipo.name as nome_filtro_tipo',
                 'filtro_tipo.id as id_filtro_tipo'
             )
             ->get();

@@ -28,36 +28,36 @@ class Horario extends Migration
             $table->string('nome_cliente');
         });
             $semanaData = [
-                ['id' => 1, 'nome' => 'Domingo'],
-                ['id' => 2, 'nome' => 'Segunda Feira'],
-                ['id' => 3, 'nome' => 'Terça Feira'],
-                ['id' => 4, 'nome' => 'Quarta Feira'],
-                ['id' => 5, 'nome' => 'Quinta Feira'],
-                ['id' => 6, 'nome' => 'Sexta Feira'],
-                ['id' => 7, 'nome' => 'Sábado'],
+                ['id' => 1, 'name' => 'Domingo'],
+                ['id' => 2, 'name' => 'Segunda Feira'],
+                ['id' => 3, 'name' => 'Terça Feira'],
+                ['id' => 4, 'name' => 'Quarta Feira'],
+                ['id' => 5, 'name' => 'Quinta Feira'],
+                ['id' => 6, 'name' => 'Sexta Feira'],
+                ['id' => 7, 'name' => 'Sábado'],
             ];
             DB::table('semana')->insert($semanaData);
 
             $tipoUsuarioData = [
-                ['id' => 1, 'nome' => 'administrativo'],
-                ['id' => 2, 'nome' => 'funcionario'],
-                ['id' => 3, 'nome' => 'cliente'],
+                ['id' => 1, 'name' => 'administrativo'],
+                ['id' => 2, 'name' => 'funcionario'],
+                ['id' => 3, 'name' => 'cliente'],
             ];
-            DB::table('tipo_usuario')->insert($tipoUsuarioData);
+            DB::table('user_type')->insert($tipoUsuarioData);
 
             $sexoData = [
-                ['id' => 1, 'nome' => 'masculino'],
-                ['id' => 2, 'nome' => 'feminino'],
-                ['id' => 3, 'nome' => 'outro'],
+                ['id' => 1, 'name' => 'masculino'],
+                ['id' => 2, 'name' => 'feminino'],
+                ['id' => 3, 'name' => 'outro'],
             ];
-            DB::table('sexo')->insert($sexoData);
+            DB::table('gender')->insert($sexoData);
 
             $servicoData = [
-                ['id' => 2, 'nome' => 'funcionários', 'url' => 'funcionarios', 'id_tipo_usuario' => 1],
-                ['id' => 3, 'nome' => 'feriados', 'url' => 'feriados', 'id_tipo_usuario' => 1],
-                ['id' => 4, 'nome' => 'folgas', 'url' => 'folgas', 'id_tipo_usuario' => 1],
-                ['id' => 5, 'nome' => 'tratamentos', 'url' => 'tratamentos', 'id_tipo_usuario' => 1],
-                ['id' => 6, 'nome' => 'profissão', 'url' => 'profissao', 'id_tipo_usuario' => 1],
+                ['id' => 2, 'name' => 'funcionários', 'url' => 'funcionarios', 'id_tipo_usuario' => 1],
+                ['id' => 3, 'name' => 'feriados', 'url' => 'feriados', 'id_tipo_usuario' => 1],
+                ['id' => 4, 'name' => 'folgas', 'url' => 'folgas', 'id_tipo_usuario' => 1],
+                ['id' => 5, 'name' => 'tratamentos', 'url' => 'tratamentos', 'id_tipo_usuario' => 1],
+                ['id' => 6, 'name' => 'profissão', 'url' => 'profession', 'id_tipo_usuario' => 1],
             ];
             DB::table('servico')->insert($servicoData);
             

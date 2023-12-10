@@ -31,7 +31,7 @@ class HorarioTrabalho extends Model
         $resultado = DB::table('horario_trabalho')
             ->join('users', 'users.id', '=', 'horario_trabalho.id_usuario')
             ->select(
-                'users.nome as funcionario',
+                'users.name as funcionario',
                 'horario_trabalho.id as id',
                 'horario_trabalho.inicio1 as inicio_de_expediente',
                 'horario_trabalho.fim1 as inicio_horario_de_almoco',
@@ -49,7 +49,7 @@ class HorarioTrabalho extends Model
             ->join('users', 'users.id', '=', 'horario_trabalho.id_usuario')
             ->join('funcionario', 'funcionario.id_usuario', '=', 'users.id')
             ->select(
-                'users.nome as nome',
+                'users.name as name',
                 'horario_trabalho.id as id',
                 'horario_trabalho.inicio1 as inicio_de_expediente',
                 'horario_trabalho.fim1 as inicio_horario_de_almoco',
@@ -68,7 +68,7 @@ class HorarioTrabalho extends Model
             ->join('users', 'users.id', '=', 'horario_trabalho.id_usuario')
             ->join('funcionario', 'funcionario.id_usuario', '=', 'users.id')
             ->select(
-                'users.nome as nome',
+                'users.name as name',
                 'horario_trabalho.id as id',
                 'horario_trabalho.inicio1 as inicio_de_expediente',
                 'horario_trabalho.fim1 as inicio_horario_de_almoco',
@@ -87,7 +87,7 @@ class HorarioTrabalho extends Model
             ->join('funcionario', 'funcionario.id_usuario', '=', 'users.id')
             ->where('funcionario.id', '=', $id)
             ->select(
-                'users.nome as nome',
+                'users.name as name',
                 'horario_trabalho.id as id',
                 'horario_trabalho.inicio1 as inicio_de_expediente',
                 'horario_trabalho.fim1 as inicio_horario_de_almoco',

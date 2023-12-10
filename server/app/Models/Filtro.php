@@ -14,7 +14,7 @@ class Filtro extends Model
     {
         $users = DB::table('filtro_tipo')
             ->join('funcao_tipo', 'funcao_tipo.id', '=', 'filtro_tipo.id_funcao_tipo')
-            ->select('filtro_tipo.id', 'filtro_tipo.nome as filtro', 'funcao_tipo.nome as funcao')
+            ->select('filtro_tipo.id', 'filtro_tipo.name as filtro', 'funcao_tipo.name as funcao')
             ->get();
         return $users;
     }
@@ -23,14 +23,14 @@ class Filtro extends Model
     {
         $filtroTipo = DB::table('filtro_tipo')
             ->join('tratamento', 'filtro_tipo.id_tratamento', '=', 'tratamento.id')
-            ->join('profissao', 'tratamento.id_profissao', '=', 'profissao.id')
+            ->join('profession', 'tratamento.id_profissao', '=', 'profession.id')
             ->where('filtro_tipo.id_tratamento', '=', $request->id_tratamento)
-            ->select(DB::raw('distinct filtro_tipo.id as id'), 'filtro_tipo.nome as nome')
+            ->select(DB::raw('distinct filtro_tipo.id as id'), 'filtro_tipo.name as name')
             ->get();
 
         $filtro = [];
         foreach ($filtroTipo as $key => $value) {
-            $filtro[$key]['nome'] = $value->nome;
+            $filtro[$key]['name'] = $value->name;
             $filtro[$key]['id'] = $value->id;
             $filtro[$key]['filtro'] = DB::table('filtro')
                 ->where('filtro.id_filtro_tipo', '=', $value->id)

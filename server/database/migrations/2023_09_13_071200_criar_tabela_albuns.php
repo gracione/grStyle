@@ -15,7 +15,7 @@ class CriarTabelaAlbuns extends Migration
     {
         Schema::create('albuns', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
+            $table->string('name');
             $table->text('descricao')->nullable();
             $table->timestamps();
         });

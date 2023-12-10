@@ -13,10 +13,10 @@ class FuncionariosController extends BaseController
         return new Funcionarios();
     }
 
-    public function listar()
-    {
-        return $this->model->listar();
-    }
+//    public function listar()
+//    {
+//        return $this->model->listar();
+//    }
 
     public function listarFuncionarios()
     {
@@ -31,19 +31,19 @@ class FuncionariosController extends BaseController
     public function dadosFuncionarioByIdUsuario(Request $request)
     {
         $expediente = new \App\Models\HorarioTrabalho();
-        $profissao = new \App\Models\Profissao();
+        $profession = new \App\Models\Profession();
 
         $idUsuario = !empty($request->id) ? $request->id : $request;
 
         $expediente = $expediente->getByIdUsuario($idUsuario);
         $funcionario = $this->model->getByIdUsuario($idUsuario);
-        $profissao = $profissao->getByIdUsuario($idUsuario);
-        $profissoes = $profissao->listar();
+        $profession = $profession->getByIdUsuario($idUsuario);
+        $profissoes = $profession->listar();
 
         return [
             'expediente' => $expediente, 
             'funcionario' => $funcionario, 
-            'profissao' => $profissao, 
+            'profession' => $profession, 
             'profissoes' => $profissoes
         ];
     }

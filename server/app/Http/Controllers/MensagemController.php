@@ -19,7 +19,7 @@ class MensagemController extends Controller
         $remetenteId = $request->remetente_id;
         $destinatarioId = $request->destinatario_id;
     
-        $mensagens = Mensagem::select('mensagens.*', 'remetente.nome as nome_remetente')
+        $mensagens = Mensagem::select('mensagens.*', 'remetente.name as nome_remetente')
         ->join('users as remetente', 'mensagens.remetente_id', '=', 'remetente.id')
         ->where(function ($query) use ($remetenteId, $destinatarioId) {
             $query->where([

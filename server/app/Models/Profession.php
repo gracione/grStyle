@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Profissao extends Model
+class Profession extends Model
 {
-    protected $table = 'profissao';
+    protected $table = 'profession';
 
     public function list($id = false)
     {
-        $query = DB::table('profissao')
-        ->select('nome as profissao', 'id');
+        $query = DB::table('profession')
+        ->select('name as profession', 'id');
         if ($id) {
             return $query->where('id', $id)->first();
         }
@@ -24,29 +24,29 @@ class Profissao extends Model
 
     // public function getById($request)
     // {
-    //     return $this->select('nome')->where('id', $request->id)->get()->toArray();
+    //     return $this->select('name')->where('id', $request->id)->get()->toArray();
     // }
 
     public function getByIdFuncionario($request)
     {
-        return $this->select('nome', 'profissao.id', 'funcionario.id_usuario', 'funcionario.id as id_funcionario')
-            ->join('funcionario', 'funcionario.id_profissao', '=', 'profissao.id')
+        return $this->select('name', 'profession.id', 'funcionario.id_usuario', 'funcionario.id as id_funcionario')
+            ->join('funcionario', 'funcionario.id_profissao', '=', 'profession.id')
             ->where('funcionario.id', $request->id)
             ->get()->first()->toArray();
     }
 
     public function getByIdUsuario($idUsuario)
     {
-        return $this->select('nome', 'profissao.id', 'funcionario.id_usuario', 'funcionario.id as id_funcionario')
-            ->join('funcionario', 'funcionario.id_profissao', '=', 'profissao.id')
+        return $this->select('name', 'profession.id', 'funcionario.id_usuario', 'funcionario.id as id_funcionario')
+            ->join('funcionario', 'funcionario.id_profissao', '=', 'profession.id')
             ->where('funcionario.id_usuario', $idUsuario)
             ->get()->toArray();
     }
 
     public function alterar($request)
     {
-        if (!empty($request->nome)) {
-            $this->where('id', $request->id)->update(['nome' => $request->nome]);
+        if (!empty($request->name)) {
+            $this->where('id', $request->id)->update(['name' => $request->name]);
             return true;
         }
         return false;
@@ -54,7 +54,7 @@ class Profissao extends Model
 
     public function inserir($request)
     {
-        $this->nome = $request->nome;
+        $this->name = $request->name;
         $this->save();
         return true;
     }

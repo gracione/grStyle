@@ -26,21 +26,21 @@ class Funcionarios extends Model
         return $this->belongsTo(User::class, 'id_usuario');
     }
 
-    public function profissao()
+    public function profession()
     {
-        return $this->belongsTo(Profissao::class, 'id_profissao');
+        return $this->belongsTo(Profession::class, 'id_profissao');
     }
 
     public function listar()
     {
         $query = $this->select(
-            'users.nome as nome',
+            'users.name as name',
             'users.id as id',
-            DB::raw('group_concat(profissao.nome) as profissao')
+            DB::raw('group_concat(profession.name) as profession')
         )
         ->join('users', 'funcionario.id_usuario', '=', 'users.id')
-        ->join('profissao', 'funcionario.id_profissao', '=', 'profissao.id')
-        ->groupBy('nome', 'id');
+        ->join('profession', 'funcionario.id_profissao', '=', 'profession.id')
+        ->groupBy('name', 'id');
     
     $results = $query->get();
     return $results->toArray();
@@ -49,16 +49,16 @@ class Funcionarios extends Model
     public function getFuncionariosAndProfissao()
     {
         $select = $this->select(
-            'users.nome as nome',
+            'users.name as name',
             'funcionario.id as id',
-            'profissao.nome as profissao',
+            'profession.name as profession',
             'funcionario.id as id_funcionario',
-            'profissao.id as id_profissao'
+            'profession.id as id_profissao'
         )
             ->join('users', 'funcionario.id_usuario', '=', 'users.id')
-            ->join('profissao', 'funcionario.id_profissao', '=', 'profissao.id');
+            ->join('profession', 'funcionario.id_profissao', '=', 'profession.id');
 
-        $tipoUsuario = auth()->user()->tipo_usuario;
+        $tipoUsuario = auth()->user()->user_type;
         $idUsuario = auth()->user()->id;
             
         if ($tipoUsuario == Constantes::FUNCIONARIO) {
@@ -71,15 +71,15 @@ class Funcionarios extends Model
     public function listEmployeesWithUserId()
     {
         $select = $this->select(
-            'users.nome as nome',
-            'profissao.nome as profissao',
+            'users.name as name',
+            'profession.name as profession',
             'funcionario.id_usuario',
-            'profissao.id as id_profissao'
+            'profession.id as id_profissao'
         )
             ->join('users', 'funcionario.id_usuario', '=', 'users.id')
-            ->join('profissao', 'funcionario.id_profissao', '=', 'profissao.id');
+            ->join('profession', 'funcionario.id_profissao', '=', 'profession.id');
 
-        $tipoUsuario = auth()->user()->tipo_usuario;
+        $tipoUsuario = auth()->user()->user_type;
         $idUsuario = auth()->user()->id;
             
         if ($tipoUsuario == Constantes::FUNCIONARIO) {
@@ -93,17 +93,17 @@ class Funcionarios extends Model
     public function getByIdUsuario($id)
     {
         return $this->select(
-            'users.nome as nome',
+            'users.name as name',
             'funcionario.id as id',
             'users.id as id_usuario',
-            'users.numero as numero',
+            'users.number as number',
             'users.email as email',
-            'users.id_sexo as id_sexo',
-            'profissao.nome as profissao',
-            'profissao.id as id_profissao'
+            'users.id_gender as id_gender',
+            'profession.name as profession',
+            'profession.id as id_profissao'
         )
             ->join('users', 'funcionario.id_usuario', '=', 'users.id')
-            ->join('profissao', 'funcionario.id_profissao', '=', 'profissao.id')
+            ->join('profession', 'funcionario.id_profissao', '=', 'profession.id')
             ->where('users.id', $id)
             ->get()->first()
             ->toArray();
@@ -122,12 +122,12 @@ class Funcionarios extends Model
         $id = !empty($request->id) ? $request->id : $request;
 
         return $this->select(
-            'users.nome as nome',
+            'users.name as name',
             'funcionario.id as id',
             'users.id as id_usuario',
-            'users.numero as numero',
+            'users.number as number',
             'users.email as email',
-            'users.id_sexo as id_sexo'
+            'users.id_gender as id_gender'
         )
             ->join('users', 'funcionario.id_usuario', '=', 'users.id')
             ->where('funcionario.id_usuario', $id)
@@ -145,10 +145,10 @@ class Funcionarios extends Model
         }
 
         $user = User::create([
-            'nome' => $request->nome,
-            'numero' => $request->numero,
-            'tipo_usuario' => '2',
-            'id_sexo' => $request->id_sexo,
+            'name' => $request->name,
+            'number' => $request->number,
+            'user_type' => '2',
+            'id_gender' => $request->id_gender,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'img_url' => './perfil/sem_usuario.png'
@@ -240,7 +240,7 @@ class Funcionarios extends Model
         }
         unset($ar['expediente']);
 
-        if (!empty($request->nome) || !empty($request->numero)) {
+        if (!empty($request->name) || !empty($request->number)) {
             $ar = array_filter($ar);
             DB::table('users')
                 ->where('id', '=', $request->id)

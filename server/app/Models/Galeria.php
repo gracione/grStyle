@@ -14,7 +14,7 @@ class Galeria extends Model
         $select = DB::table('albuns')
             ->select(
                 'albuns.id as id',
-                'albuns.nome as nome'
+                'albuns.name as name'
             )
             ->get();
         return $select->toArray();
@@ -43,7 +43,7 @@ class Galeria extends Model
     public function inserir($request)
     {
         DB::table('albuns')->insert([
-            'nome' => $request->nome,
+            'name' => $request->name,
             'descricao' => ''
         ]);
 

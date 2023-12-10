@@ -13,7 +13,7 @@ class Tratamentos extends Model
     use HasFactory;
 
     public $tratamento = 'tratamento';
-    public $profissao = 'profissao';
+    public $profession = 'profession';
     public $filtroTipo = 'filtro_tipo';
     public $filtro = 'filtro';
 
@@ -22,11 +22,11 @@ class Tratamentos extends Model
         $select = DB::table($this->tratamento)
             ->select(
                 "$this->tratamento.id as id",
-                "$this->tratamento.nome as servico",
-                "$this->profissao.nome as profissao",
+                "$this->tratamento.name as servico",
+                "$this->profession.name as profession",
                 "$this->tratamento.tempo_gasto as tempo_gasto"
             )
-            ->join("$this->profissao", "$this->profissao.id", '=', "$this->tratamento.id_profissao")
+            ->join("$this->profession", "$this->profession.id", '=', "$this->tratamento.id_profissao")
             ->get();
         $results = $select->toArray();
 
@@ -40,7 +40,7 @@ class Tratamentos extends Model
     public function getByIdProfession($idProfissao)
     {
         $select = DB::table($this->tratamento)
-            ->select("$this->tratamento.nome as nome", "$this->tratamento.id as id")
+            ->select("$this->tratamento.name as name", "$this->tratamento.id as id")
             ->where("$this->tratamento.id_profissao", '=', $idProfissao)
             ->get();
 
@@ -50,7 +50,7 @@ class Tratamentos extends Model
     public static function getById($id)
     {
         $select = DB::table('tratamento')
-            ->select('tratamento.nome as nome', 'tratamento.tempo_gasto as tempo_gasto', 'tratamento.id as id', 'tratamento.id_profissao as id_profissao')
+            ->select('tratamento.name as name', 'tratamento.tempo_gasto as tempo_gasto', 'tratamento.id as id', 'tratamento.id_profissao as id_profissao')
             ->where('tratamento.id', '=', $id)
             ->get();
 
@@ -67,7 +67,7 @@ class Tratamentos extends Model
 
     public function inserir($request)
     {
-        $tratamento['nome'] = $request->tratamento;
+        $tratamento['name'] = $request->tratamento;
         $tratamento['tempo_gasto'] = Util::convertHoursToMinutes($request->tempoGasto);
         $tratamento['id_profissao'] = $request->idProfissao;
 
@@ -97,16 +97,16 @@ class Tratamentos extends Model
     public function alterar($request)
     {
         $dadosParaAlterar = [
-            'nome' => $request->nomeTratamento ?? null,
+            'name' => $request->nomeTratamento ?? null,
             'tempo_gasto' => !empty($request->tempoGasto) ? Util::convertHoursToMinutes($request->tempoGasto) : null,
-            'id_profissao' => $request->profissao ?? null
+            'id_profissao' => $request->profession ?? null
         ];
 
         foreach ($request->filtroTipo ?? [] as $key => $value) {
             if (!empty($value['id'])) {
                 DB::table('filtro_tipo')
                     ->where('id', $value['id'])
-                    ->update(array_filter(['nome' => $value['nome']]));
+                    ->update(array_filter(['name' => $value['name']]));
             }
         }
 

@@ -22,10 +22,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'nome_estabelecimento',
-        'nome',
-        'numero',
-        'tipo_usuario',
-        'id_sexo',
+        'name',
+        'number',
+        'user_type',
+        'id_gender',
         'email',
         'password',
         'id_google',
@@ -67,8 +67,8 @@ class User extends Authenticatable
     public function alterar($request)
     {
         try {
-            $ar['nome'] = !empty($request->nome) ? $request->nome : null;
-            $ar['numero'] = !empty($request->numero) ? $request->numero : null;
+            $ar['name'] = !empty($request->name) ? $request->name : null;
+            $ar['number'] = !empty($request->number) ? $request->number : null;
             $ar['password'] = !empty($request->senha) ? Hash::make($request->senha) : null;
             $ar['email'] = !empty($request->email) ? $request->email : null;
 
