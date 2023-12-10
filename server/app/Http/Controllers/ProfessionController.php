@@ -14,10 +14,10 @@ class ProfessionController extends BaseController
         return new Profession();
     }
 
-    public function inserir(Request $request)
-    {
-        return $this->model->inserir($request);
-    }
+//    public function inserir(Request $request)
+//    {
+//        return $this->model->inserir($request);
+//    }
 
     public function listAction($id = false)
     {

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 class Profession extends Model
 {
     protected $table = 'profession';
+    protected $fillable = ['name'];
 
     public function list($id = false)
     {
@@ -52,10 +53,10 @@ class Profession extends Model
         return false;
     }
 
-    public function inserir($request)
-    {
-        $this->name = $request->name;
-        $this->save();
-        return true;
-    }
+//    public function inserir($request)
+//    {
+//        $this->name = $request->name;
+//        $this->save();
+//        return true;
+//    }
 }
