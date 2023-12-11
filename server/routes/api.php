@@ -41,9 +41,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     //Route::post('/profession/list-id-employee', [ProfessionController::class, 'getByIdEmployee']);
     
     // Services and Professions/Serviços e Profissões
-//    Route::get('/services-profession', [App\Http\Controllers\ServicesProfessionController::class, 'index']);
-//    Route::get('/services-profession/{id}', [App\Http\Controllers\ServicesProfessionController::class, 'show']);
-//    Route::post('/services-profession', [App\Http\Controllers\ServicesProfessionController::class, 'store']);
+    Route::get('/services-profession', [App\Http\Controllers\ServicesProfessionController::class, 'index']);
+    Route::get('/services-profession/{id}', [App\Http\Controllers\ServicesProfessionController::class, 'show']);
+    Route::post('/services-profession', [App\Http\Controllers\ServicesProfessionController::class, 'store']);
 //    Route::put('/services-profession/{id}', [App\Http\Controllers\ServicesProfessionController::class, 'update']);
 //    Route::delete('/services-profession/{id}', [App\Http\Controllers\ServicesProfessionController::class, 'destroy']);
 //    Route::get('/services-profession/list-id-profession', [App\Http\Controllers\ServicesProfessionController::class, 'servicesByIdProfession']);

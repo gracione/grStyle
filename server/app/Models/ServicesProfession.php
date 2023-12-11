@@ -14,6 +14,8 @@ class ServicesProfession extends Model
 
     public $servicesProfession = 'services_profession';
     public $profession = 'profession';
+    protected $table = 'services_profession';
+    protected $fillable = ['name','time_spent','id_profession'];
 
     public function listar()
     {

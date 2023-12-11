@@ -20,6 +20,8 @@ class CreateServicesProfession extends Migration
             $table->integer('time_spent');
             $table->integer('id_profession')->unsigned();
             $table->foreign('id_profession')->references('id')->on('profession');
+            $table->date('created_at');
+            $table->date('updated_at');
         });
     }
 
