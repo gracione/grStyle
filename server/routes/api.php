@@ -46,14 +46,14 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/services-profession', [App\Http\Controllers\ServicesProfessionController::class, 'store']);
     Route::put('/services-profession/{id}', [App\Http\Controllers\ServicesProfessionController::class, 'update']);
     Route::delete('/services-profession/{id}', [App\Http\Controllers\ServicesProfessionController::class, 'destroy']);
-    Route::get('/services-profession/list-id-profession', [App\Http\Controllers\ServicesProfessionController::class, 'servicesByIdProfession']);
+//    Route::get('/services-profession/list-id-profession', [App\Http\Controllers\ServicesProfessionController::class, 'servicesByIdProfession']);
 
 //    // Employees/Funcionários
-//    Route::get('/employees', [App\Http\Controllers\EmployeesController::class, 'index']);
-//    Route::get('/employees/{id}', [App\Http\Controllers\EmployeesController::class, 'show']);
-//    Route::post('/employees', [App\Http\Controllers\EmployeesController::class, 'store']);
-//    Route::put('/employees/{id}', [App\Http\Controllers\EmployeesController::class, 'update']);
-//    Route::delete('/employees/{id}', [App\Http\Controllers\EmployeesController::class, 'destroy']);
+    Route::get('/employees', [App\Http\Controllers\EmployeesController::class, 'index']);
+    Route::get('/employees/{id}', [App\Http\Controllers\EmployeesController::class, 'show']);
+    Route::post('/employees', [App\Http\Controllers\EmployeesController::class, 'store']);
+    Route::put('/employees/{id}', [App\Http\Controllers\EmployeesController::class, 'update']);
+    Route::delete('/employees/{id}', [App\Http\Controllers\EmployeesController::class, 'destroy']);
 //    Route::post('/employees/show-id', [App\Http\Controllers\EmployeesController::class, 'employeeDataByUserId']);
 //    Route::get('/employees/list-all-employees', [App\Http\Controllers\EmployeesController::class, 'listAllEmployees']);
 //    Route::get('/employees/list-employees-with-user-id', [App\Http\Controllers\EmployeesController::class, 'listEmployeesWithUserId']);

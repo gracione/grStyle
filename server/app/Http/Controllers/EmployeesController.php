@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Funcionario;
 use Illuminate\Http\Request;
-use App\Models\Funcionarios;
+use App\Models\Employees;
 
-class FuncionariosController extends BaseController
+class EmployeesController extends BaseController
 {
     protected function getModel()
     {
-        return new Funcionarios();
+        return new Employees();
     }
 
 //    public function listar()

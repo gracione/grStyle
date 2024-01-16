@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Validator;
 use App\Http\Controllers\API\Constantes;
 
-class Funcionarios extends Model
+class Employees extends Model
 {
     use HasFactory;
 
