@@ -17,7 +17,7 @@ class Estabelecimento extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('id_proprietario')->unsigned();
-            $table->foreign('id_proprietario')->references('id')->on('users');
+            $table->foreign('id_proprietario')->references('id')->on('user');
         });
     }
 

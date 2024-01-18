@@ -14,16 +14,16 @@ class Employees extends Model
 {
     use HasFactory;
 
-    protected $table = 'funcionario';
+    protected $table = 'employee';
 
     protected $fillable = [
-        'id_usuario',
+        'id_user',
         'id_profissao',
     ];
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'id_usuario');
+        return $this->belongsTo(User::class, 'id_user');
     }
 
     public function profession()
@@ -34,12 +34,12 @@ class Employees extends Model
     public function listar()
     {
         $query = $this->select(
-            'users.name as name',
-            'users.id as id',
+            'user.name as name',
+            'user.id as id',
             DB::raw('group_concat(profession.name) as profession')
         )
-        ->join('users', 'funcionario.id_usuario', '=', 'users.id')
-        ->join('profession', 'funcionario.id_profissao', '=', 'profession.id')
+        ->join('user', 'employee.id_user', '=', 'user.id')
+        ->join('profession', 'employee.id_profissao', '=', 'profession.id')
         ->groupBy('name', 'id');
     
     $results = $query->get();
@@ -49,20 +49,20 @@ class Employees extends Model
     public function getFuncionariosAndProfissao()
     {
         $select = $this->select(
-            'users.name as name',
-            'funcionario.id as id',
+            'user.name as name',
+            'employee.id as id',
             'profession.name as profession',
-            'funcionario.id as id_funcionario',
+            'employee.id as id_employee',
             'profession.id as id_profissao'
         )
-            ->join('users', 'funcionario.id_usuario', '=', 'users.id')
-            ->join('profession', 'funcionario.id_profissao', '=', 'profession.id');
+            ->join('user', 'employee.id_user', '=', 'user.id')
+            ->join('profession', 'employee.id_profissao', '=', 'profession.id');
 
         $tipoUsuario = auth()->user()->user_type;
         $idUsuario = auth()->user()->id;
             
         if ($tipoUsuario == Constantes::FUNCIONARIO) {
-            $select = $select->where('funcionario.id_usuario', $idUsuario);
+            $select = $select->where('employee.id_user', $idUsuario);
         }
 
         return $select->get()->toArray();
@@ -71,19 +71,19 @@ class Employees extends Model
     public function listEmployeesWithUserId()
     {
         $select = $this->select(
-            'users.name as name',
+            'user.name as name',
             'profession.name as profession',
-            'funcionario.id_usuario',
+            'employee.id_user',
             'profession.id as id_profissao'
         )
-            ->join('users', 'funcionario.id_usuario', '=', 'users.id')
-            ->join('profession', 'funcionario.id_profissao', '=', 'profession.id');
+            ->join('user', 'employee.id_user', '=', 'user.id')
+            ->join('profession', 'employee.id_profissao', '=', 'profession.id');
 
         $tipoUsuario = auth()->user()->user_type;
         $idUsuario = auth()->user()->id;
             
         if ($tipoUsuario == Constantes::FUNCIONARIO) {
-            $select = $select->where('funcionario.id_usuario', $idUsuario);
+            $select = $select->where('employee.id_user', $idUsuario);
         }
 
         return $select->get()->toArray();
@@ -93,25 +93,25 @@ class Employees extends Model
     public function getByIdUsuario($id)
     {
         return $this->select(
-            'users.name as name',
-            'funcionario.id as id',
-            'users.id as id_usuario',
-            'users.number as number',
-            'users.email as email',
-            'users.id_gender as id_gender',
+            'user.name as name',
+            'employee.id as id',
+            'user.id as id_user',
+            'user.number as number',
+            'user.email as email',
+            'user.id_gender as id_gender',
             'profession.name as profession',
             'profession.id as id_profissao'
         )
-            ->join('users', 'funcionario.id_usuario', '=', 'users.id')
-            ->join('profession', 'funcionario.id_profissao', '=', 'profession.id')
-            ->where('users.id', $id)
+            ->join('user', 'employee.id_user', '=', 'user.id')
+            ->join('profession', 'employee.id_profissao', '=', 'profession.id')
+            ->where('user.id', $id)
             ->get()->first()
             ->toArray();
     }
 
     public static function getIdUsuarioByIdFuncionario($id)
     {
-        return self::select('id_usuario as id')
+        return self::select('id_user as id')
             ->where('id', $id)
             ->pluck('id')
             ->first();
@@ -122,22 +122,22 @@ class Employees extends Model
         $id = !empty($request->id) ? $request->id : $request;
 
         return $this->select(
-            'users.name as name',
-            'funcionario.id as id',
-            'users.id as id_usuario',
-            'users.number as number',
-            'users.email as email',
-            'users.id_gender as id_gender'
+            'user.name as name',
+            'employee.id as id',
+            'user.id as id_user',
+            'user.number as number',
+            'user.email as email',
+            'user.id_gender as id_gender'
         )
-            ->join('users', 'funcionario.id_usuario', '=', 'users.id')
-            ->where('funcionario.id_usuario', $id)
+            ->join('user', 'employee.id_user', '=', 'user.id')
+            ->where('employee.id_user', $id)
             ->first()->toArray();
     }
 
     public function inserir($request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:user',
         ]);
 
         if ($validator->fails()) {
@@ -156,7 +156,7 @@ class Employees extends Model
 
         foreach ($request->profissoesCadastradas as $key => $idProfissao) {
             self::create([
-                'id_usuario' => $user->id,
+                'id_user' => $user->id,
                 'id_profissao' => $idProfissao
             ]);
         }
@@ -166,7 +166,7 @@ class Employees extends Model
             'fim1' => $request->inicioAlmoco . ":00",
             'inicio2' => $request->fimAlmoco . ":00",
             'fim2' => $request->fimExpediente . ":00",
-            'id_usuario' => $user->id
+            'id_user' => $user->id
         ]);
 
         return true;
@@ -175,10 +175,10 @@ class Employees extends Model
     public function destroyByIdUsuario($idUsuario)
     {
         try {
-            DB::table('folga')->where('id_usuario', $idUsuario)->delete();
-            DB::table('funcionario')->where('id_usuario', $idUsuario)->delete();
-            DB::table('horario_trabalho')->where('id_usuario', $idUsuario)->delete();
-            DB::table('users')->where('id', $idUsuario)->delete();
+            DB::table('folga')->where('id_user', $idUsuario)->delete();
+            DB::table('employee')->where('id_user', $idUsuario)->delete();
+            DB::table('horario_trabalho')->where('id_user', $idUsuario)->delete();
+            DB::table('user')->where('id', $idUsuario)->delete();
         } catch (Exception $e) {
             return false;
         }
@@ -193,12 +193,12 @@ class Employees extends Model
             $idUsuario = self::getIdUsuarioByIdFuncionario($idFuncionario);
 
             $result = $this->select('*')
-                ->join('users', 'funcionario.id_usuario', '=', 'users.id')
-                ->where('users.id', $idUsuario)
+                ->join('user', 'employee.id_user', '=', 'user.id')
+                ->where('user.id', $idUsuario)
                 ->get()
                 ->toArray();
             if (count($result) > 1) {
-                DB::table('funcionario')->where('id', $idFuncionario)->delete();
+                DB::table('employee')->where('id', $idFuncionario)->delete();
             }
         } catch (Exception $e) {
             return false;
@@ -215,10 +215,10 @@ class Employees extends Model
             foreach ($ar['profissoesAlteradas'] as $key => $value) {
                 if ($value == '-1') {
                     if (count(Funcionarios::getByIdUsuario($ar['id'])) > 1) {
-                        DB::table('funcionario')->where('id', $key)->delete();
+                        DB::table('employee')->where('id', $key)->delete();
                     }
                 } else if ($value != '-1') {
-                    DB::table('funcionario')->where('id', $key)->update(['id_profissao' => $value]);
+                    DB::table('employee')->where('id', $key)->update(['id_profissao' => $value]);
                 }
             }
             unset($ar['profissoesAlteradas']);
@@ -227,7 +227,7 @@ class Employees extends Model
         if (!empty($ar['profissoesCadastradas'])) {
             foreach ($ar['profissoesCadastradas'] as $key => $value) {
                 if (!empty($value)) {
-                    DB::table('funcionario')->insert(['id_usuario' => $ar['id'], 'id_profissao' => $value]);
+                    DB::table('employee')->insert(['id_user' => $ar['id'], 'id_profissao' => $value]);
                 }
             }
             unset($ar['profissoesCadastradas']);
@@ -235,14 +235,14 @@ class Employees extends Model
 
         if (!empty(array_filter($request->expediente))) {
             DB::table('horario_trabalho')
-                ->where('id_usuario', '=', $request->id)
+                ->where('id_user', '=', $request->id)
                 ->update(array_filter($request->expediente));
         }
         unset($ar['expediente']);
 
         if (!empty($request->name) || !empty($request->number)) {
             $ar = array_filter($ar);
-            DB::table('users')
+            DB::table('user')
                 ->where('id', '=', $request->id)
                 ->update($ar);
         }

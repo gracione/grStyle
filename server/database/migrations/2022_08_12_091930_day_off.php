@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Folgas extends Migration
+class DayOff extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class Folgas extends Migration
      */
     public function up()
     {
-        Schema::create('folga', function (Blueprint $table) {
+        Schema::create('day_off', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('dia_semana');
-            $table->integer('id_usuario')->unsigned();
-            $table->foreign('id_usuario')->references('id')->on('users');
+            $table->integer('id_user')->unsigned();
+            $table->foreign('id_user')->references('id')->on('user');
         });
         Schema::create('semana', function (Blueprint $table) {
             $table->increments('id');
@@ -27,8 +27,8 @@ class Folgas extends Migration
             $table->increments('id');
             $table->date('inicio');
             $table->date('fim');
-            $table->integer('id_usuario')->unsigned();
-            $table->foreign('id_usuario')->references('id')->on('users');
+            $table->integer('id_user')->unsigned();
+            $table->foreign('id_user')->references('id')->on('user');
         });
     }
 

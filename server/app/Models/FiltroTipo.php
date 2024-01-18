@@ -12,19 +12,19 @@ class FiltroTipo extends Model
     public static function getByIdTratamento($request)
     {
         $id = !empty($request->id) ? $request->id : $request;
-        $users = DB::table('filtro_tipo')
+        $user = DB::table('filtro_tipo')
             ->join('filtro', 'filtro.id_filtro_tipo', '=', 'filtro_tipo.id')
-            ->where('filtro_tipo.id_tratamento', '=', $id)
+            ->where('filtro_tipo.id_service_profession', '=', $id)
             ->select(
                 'filtro.id as id',
                 'filtro.name as name',
                 'filtro.porcentagem_tempo as porcentagem_tempo',
                 'filtro.id_filtro_tipo as id_filtro_tipo',
-                'filtro_tipo.name as nome_filtro_tipo',
+                'filtro_tipo.name as name_filtro_tipo',
                 'filtro_tipo.id as id_filtro_tipo'
             )
             ->get();
-        $ar = $users->toArray();
+        $ar = $user->toArray();
         $filtro = [];
         $aux = 0;
         $temp = -1;

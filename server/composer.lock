@@ -2696,7 +2696,7 @@
                     "role": "Developer"
                 }
             ],
-            "description": "A lightweight and powerful OAuth 2.0 authorization and resource server library with support for all the core specification grants. This library will allow you to secure your API with OAuth and allow your applications users to approve apps that want to access their data from your API.",
+            "description": "A lightweight and powerful OAuth 2.0 authorization and resource server library with support for all the core specification grants. This library will allow you to secure your API with OAuth and allow your applications user to approve apps that want to access their data from your API.",
             "homepage": "https://oauth2.thephpleague.com/",
             "keywords": [
                 "Authentication",

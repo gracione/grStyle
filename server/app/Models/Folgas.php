@@ -12,17 +12,17 @@ class Folgas extends Model
     use HasFactory;
     protected $table = 'folga';
     public $timestamps = false;
-    protected $fillable = ['dia_semana' ,'id_usuario'];
+    protected $fillable = ['dia_semana' ,'id_user'];
 
     public function list($id = false)
     {
         $query = DB::table('folga')
-            ->join('users', 'users.id', '=', 'folga.id_usuario')
-            ->join('funcionario', 'funcionario.id_usuario', '=', 'folga.id_usuario')
-            ->join('profession', 'funcionario.id_profissao', '=', 'profession.id')
+            ->join('user', 'user.id', '=', 'folga.id_user')
+            ->join('employee', 'employee.id_user', '=', 'folga.id_user')
+            ->join('profession', 'employee.id_profissao', '=', 'profession.id')
             ->join('semana', 'semana.id', '=', 'folga.dia_semana')
             ->select(
-                'users.name as funcionario',
+                'user.name as employee',
                 'semana.name as folga',
                 'folga.id as id',
                 'folga.dia_semana as dia_semana',
@@ -41,7 +41,7 @@ class Folgas extends Model
         $idFuncionario = $request->dados['idFuncionario'];
         $select = DB::table('folga')
             ->select('dia_semana')
-            ->where('id_funcionario', $idFuncionario)
+            ->where('id_employee', $idFuncionario)
             ->get();
         $results = $select->toArray();
 
@@ -60,7 +60,7 @@ class Folgas extends Model
         $select = DB::table('folga')
             ->select('dia_semana')
             ->where('dia_semana', $diaSemana)
-            ->where('id_funcionario', $idFuncionario)
+            ->where('id_employee', $idFuncionario)
             ->get();
         $results = $select->toArray();
 
@@ -73,7 +73,7 @@ class Folgas extends Model
 
         DB::table('folga')->insert([
             'dia_semana' => $request->diaSemana,
-            'id_usuario' => $dados[1]
+            'id_user' => $dados[1]
         ]);
 
         return true;

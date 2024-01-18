@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TratamentoFuncionarios extends Migration
+class EmployeeTreatment extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class TratamentoFuncionarios extends Migration
      */
     public function up()
     {
-        Schema::create('tratamento_funcionarios', function (Blueprint $table) {
+        Schema::create('employee_treatment', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('tempo_gasto');
-            $table->integer('id_funcionario')->unsigned();
-            $table->foreign('id_funcionario')->references('id')->on('funcionario');
+            $table->integer('time_spent');
+            $table->integer('id_employee')->unsigned();
+            $table->foreign('id_employee')->references('id')->on('employee');
         });
     }
 

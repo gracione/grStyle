@@ -30,17 +30,17 @@ class Profession extends Model
 
     public function getByIdFuncionario($request)
     {
-        return $this->select('name', 'profession.id', 'funcionario.id_usuario', 'funcionario.id as id_funcionario')
-            ->join('funcionario', 'funcionario.id_profissao', '=', 'profession.id')
-            ->where('funcionario.id', $request->id)
+        return $this->select('name', 'profession.id', 'employee.id_user', 'employee.id as id_employee')
+            ->join('employee', 'employee.id_profissao', '=', 'profession.id')
+            ->where('employee.id', $request->id)
             ->get()->first()->toArray();
     }
 
     public function getByIdUsuario($idUsuario)
     {
-        return $this->select('name', 'profession.id', 'funcionario.id_usuario', 'funcionario.id as id_funcionario')
-            ->join('funcionario', 'funcionario.id_profissao', '=', 'profession.id')
-            ->where('funcionario.id_usuario', $idUsuario)
+        return $this->select('name', 'profession.id', 'employee.id_user', 'employee.id as id_employee')
+            ->join('employee', 'employee.id_profissao', '=', 'profession.id')
+            ->where('employee.id_user', $idUsuario)
             ->get()->toArray();
     }
 

@@ -21,7 +21,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'nome_estabelecimento',
+        'name_estabelecimento',
         'name',
         'number',
         'user_type',
@@ -56,9 +56,9 @@ class User extends Authenticatable
 
     public function listar($request)
     {
-        $result = DB::table('users')
+        $result = DB::table('user')
             ->select('*')
-            ->where('id','!=',$request->id_usuario)
+            ->where('id','!=',$request->id_user)
             ->get()->toArray();
 
         return $result;
@@ -72,7 +72,7 @@ class User extends Authenticatable
             $ar['password'] = !empty($request->senha) ? Hash::make($request->senha) : null;
             $ar['email'] = !empty($request->email) ? $request->email : null;
 
-            DB::table('users')
+            DB::table('user')
                 ->where('id', $request->id)
                 ->update(array_filter($ar));
         } catch (Exception $e) {

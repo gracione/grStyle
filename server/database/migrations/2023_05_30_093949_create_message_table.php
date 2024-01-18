@@ -3,7 +3,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMensagensTable extends Migration
+class CreateMessageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,8 +19,8 @@ class CreateMensagensTable extends Migration
 //            $table->text('conteudo');
 //            $table->timestamps();
 //
-//            $table->foreign('remetente_id')->references('id')->on('users');
-//            $table->foreign('destinatario_id')->references('id')->on('users');
+//            $table->foreign('remetente_id')->references('id')->on('user');
+//            $table->foreign('destinatario_id')->references('id')->on('user');
 //        });
     }
 

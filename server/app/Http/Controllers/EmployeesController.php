@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Funcionario;
 use Illuminate\Http\Request;
 use App\Models\Employees;
 
@@ -36,13 +35,13 @@ class EmployeesController extends BaseController
         $idUsuario = !empty($request->id) ? $request->id : $request;
 
         $expediente = $expediente->getByIdUsuario($idUsuario);
-        $funcionario = $this->model->getByIdUsuario($idUsuario);
+        $employee = $this->model->getByIdUsuario($idUsuario);
         $profession = $profession->getByIdUsuario($idUsuario);
         $profissoes = $profession->listar();
 
         return [
             'expediente' => $expediente, 
-            'funcionario' => $funcionario, 
+            'employee' => $employee, 
             'profession' => $profession, 
             'profissoes' => $profissoes
         ];

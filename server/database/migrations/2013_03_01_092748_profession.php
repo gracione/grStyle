@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Cliente extends Migration
+class Profession extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class Cliente extends Migration
      */
     public function up()
     {
-        Schema::create('cliente', function (Blueprint $table) {
+        Schema::create('profession', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_usuario')->unsigned();
-            $table->foreign('id_usuario')->references('id')->on('users');
+            $table->string('name');
+            $table->date('created_at');
+            $table->date('updated_at');
         });
     }
 
@@ -27,6 +28,6 @@ class Cliente extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('profession');
     }
 }

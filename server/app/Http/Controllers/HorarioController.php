@@ -44,11 +44,11 @@ class HorarioController extends BaseController
         $ar = [
             'horario_inicio' => "$request->data $horarioInicioHora:00",
             'horario_fim' => "$request->data $horarioFimHora:00",
-            'id_cliente' => $request->idCliente,
-            'id_tratamento' => $request->idTratamento,
-            'id_funcionario' => $request->idFuncionario,
-            'confirmado' => empty($request->nomeCliente) ? false : true,
-            'nome_cliente' => empty($request->nomeCliente) ? $request->nomeUsuario : $request->nomeCliente,
+            'id_client' => $request->idCliente,
+            'id_service_profession' => $request->idTratamento,
+            'id_employee' => $request->idFuncionario,
+            'confirmed' => empty($request->nameCliente) ? false : true,
+            'name_client' => empty($request->nameCliente) ? $request->nameUsuario : $request->nameCliente,
         ];
     
         // Insere os dados no banco de dados utilizando o método apropriado
@@ -81,8 +81,8 @@ class HorarioController extends BaseController
 
     public function tempoGasto(Request $request)
     {
-        return $request->filtros == 0 && $request->servicesProfession == 0 ? 0 :
-            Util::calculateTimeSpent($request->filtros, $request->servicesProfession);
+        return $request->filtros == 0 && $request->serviceProfession == 0 ? 0 :
+            Util::calculateTimeSpent($request->filtros, $request->serviceProfession);
     }
 
     public function horariosDisponivel(Request $request)

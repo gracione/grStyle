@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Exception;
 use Illuminate\Http\Request;
 use App\Models\Galeria;
-use App\Models\Imagens;
+use App\Models\Image;
 use Illuminate\Support\Facades\App;
 
 class GaleriaController extends BaseController
@@ -36,7 +36,7 @@ class GaleriaController extends BaseController
         $image->move($publicPath, $imageName);
 
 //        $idUsuario = auth()->user()->id;
-        $imagens = new Imagens();
+        $image = new Image();
         $publicPath = public_path('perfil/' . $imageName);
 
         if (file_exists($publicPath)) {
@@ -44,10 +44,10 @@ class GaleriaController extends BaseController
             $imageData = base64_encode($imageContent);
             $imageSrc = 'data:image/' . pathinfo($publicPath, PATHINFO_EXTENSION) . ';base64,' . $imageData;
         }
-        $imagens->album_id = $request->idAlbum;
-        $imagens->nome_arquivo = $imageSrc;
-        $imagens->descricao = 'teste';
-        $imagens->save();
+        $image->album_id = $request->idAlbum;
+        $image->name_arquivo = $imageSrc;
+        $image->description = 'teste';
+        $image->save();
         return $imageSrc;
     }
     public function inserir(Request $request)

@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class Funcionario extends Migration
+class Employee extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +14,12 @@ class Funcionario extends Migration
      */
     public function up()
     {
-        Schema::create('funcionario', function (Blueprint $table) {
+        Schema::create('employees', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_usuario')->unsigned();
-            $table->foreign('id_usuario')->references('id')->on('users');
-            $table->integer('id_profissao')->unsigned();
-            $table->foreign('id_profissao')->references('id')->on('profession');
+            $table->integer('id_user')->unsigned();
+            $table->foreign('id_user')->references('id')->on('user');
+            $table->integer('id_profession')->unsigned();
+            $table->foreign('id_profession')->references('id')->on('profession');
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class Funcionario extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('funcionario');
+        Schema::dropIfExists('employee');
     }
 }

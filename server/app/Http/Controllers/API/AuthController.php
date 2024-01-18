@@ -19,16 +19,16 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    public $users;
+    public $user;
 
     public function __construct()
     {
-        $this->users = new User();
+        $this->user = new User();
     }
 
     public function listar(Request $request)
     {
-        return $this->users->listar($request);
+        return $this->user->listar($request);
     }
     public function registrarCliente(Request $request)
     {
@@ -37,7 +37,7 @@ class AuthController extends Controller
             'name' => 'required|string|max:255',
             'number' => 'required|string|max:255',
             'id_gender' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:user',
             'password' => 'required|string|min:3',
         ]);
 
@@ -55,8 +55,8 @@ class AuthController extends Controller
             'img_url' => './perfil/sem_usuario.png',
         ]);
 
-        DB::table('cliente')->insert([
-            'id_usuario' => $user->id,
+        DB::table('client')->insert([
+            'id_user' => $user->id,
         ]);
 
         $token = $user->createToken('auth_token')->plainTextToken;
@@ -64,7 +64,7 @@ class AuthController extends Controller
         return response()->json([
             'user_type' => $user->user_type,
             'name' => $user->name,
-            'id_usuario' => $user->id,
+            'id_user' => $user->id,
             'data' => $user,
             'token' => $token,
             'token_type' => 'Bearer',
@@ -76,7 +76,7 @@ class AuthController extends Controller
         if (!empty($request['googleId'])) {
             $idGoogle = $request['googleId'];
 
-            $userGoogle = DB::table('users')
+            $userGoogle = DB::table('user')
                 ->where('id_google', $idGoogle)
                 ->get();
 
@@ -92,13 +92,13 @@ class AuthController extends Controller
                     'img_url' => $request['imageUrl'] ?? null
                 ]);
 
-                DB::table('cliente')->insert([
-                    'id_usuario' => $user['id']
+                DB::table('client')->insert([
+                    'id_user' => $user['id']
                 ]);
 
                 $token = $user->createToken('auth_token')->plainTextToken;
 
-                return response()->json(['user_type' => $user['user_type'], 'name' => $user['name'], 'id_usuario' => $user['id'], 'data' => $user, 'img_url' => $user['img_url'], 'token' => $token, 'token_type' => 'Bearer',]);
+                return response()->json(['user_type' => $user['user_type'], 'name' => $user['name'], 'id_user' => $user['id'], 'data' => $user, 'img_url' => $user['img_url'], 'token' => $token, 'token_type' => 'Bearer',]);
             }
         } else if (!Auth::attempt($request->only('email', 'password'))) {
             return response()
@@ -109,7 +109,7 @@ class AuthController extends Controller
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        return response()->json(['user_type' => $user['user_type'], 'name' => $user['name'], 'id_usuario' => $user['id'], 'img_url' => $user['img_url'], 'token' => $token]);
+        return response()->json(['user_type' => $user['user_type'], 'name' => $user['name'], 'id_user' => $user['id'], 'img_url' => $user['img_url'], 'token' => $token]);
     }
 
     public function dadosConfiguracao(Request $request)

@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class Horario extends Migration
+class ScheduledTime extends Migration
 {
     /**
      * Run the migrations.
@@ -14,18 +14,18 @@ class Horario extends Migration
      */
     public function up()
     {
-        Schema::create('horario', function (Blueprint $table) {
+        Schema::create('scheduled_time', function (Blueprint $table) {
             $table->increments('id');
-            $table->dateTime('horario_inicio');
-            $table->dateTime('horario_fim');
-            $table->integer('id_cliente')->unsigned();
-            $table->foreign('id_cliente')->references('id')->on('users');
-            $table->integer('id_tratamento')->unsigned();
-            $table->foreign('id_tratamento')->references('id')->on('services_profession');
-            $table->integer('id_funcionario')->unsigned();
-            $table->foreign('id_funcionario')->references('id')->on('funcionario');
-            $table->boolean('confirmado');
-            $table->string('nome_cliente');
+            $table->dateTime('start_time');
+            $table->dateTime('end_time');
+            $table->integer('id_client')->unsigned();
+            $table->foreign('id_client')->references('id')->on('user');
+            $table->integer('id_service_profession')->unsigned();
+            $table->foreign('id_service_profession')->references('id')->on('service_profession');
+            $table->integer('id_employee')->unsigned();
+            $table->foreign('id_employee')->references('id')->on('employee');
+            $table->boolean('confirmed');
+            $table->string('client_name');
         });
             $semanaData = [
                 ['id' => 1, 'name' => 'Domingo'],
@@ -40,8 +40,8 @@ class Horario extends Migration
 
             $tipoUsuarioData = [
                 ['id' => 1, 'name' => 'administrativo'],
-                ['id' => 2, 'name' => 'funcionario'],
-                ['id' => 3, 'name' => 'cliente'],
+                ['id' => 2, 'name' => 'employee'],
+                ['id' => 3, 'name' => 'client'],
             ];
             DB::table('user_type')->insert($tipoUsuarioData);
 
@@ -53,7 +53,7 @@ class Horario extends Migration
             DB::table('gender')->insert($sexoData);
 
             $servicoData = [
-                ['id' => 2, 'name' => 'funcionários', 'url' => 'funcionarios', 'id_tipo_usuario' => 1],
+                ['id' => 2, 'name' => 'funcionários', 'url' => 'employees', 'id_tipo_usuario' => 1],
                 ['id' => 3, 'name' => 'feriados', 'url' => 'feriados', 'id_tipo_usuario' => 1],
                 ['id' => 4, 'name' => 'folgas', 'url' => 'folgas', 'id_tipo_usuario' => 1],
                 ['id' => 5, 'name' => 'tratamentos', 'url' => 'tratamentos', 'id_tipo_usuario' => 1],
@@ -63,21 +63,21 @@ class Horario extends Migration
             
             Schema::create('configuracao', function (Blueprint $table) {
                 $table->increments('id');
-                $table->string('nome_estabelecimento')->nullable();
+                $table->string('name_estabelecimento')->nullable();
                 $table->string('frequencia_horario')->nullable();
                 $table->string('contato_estabelcimento')->nullable();
                 $table->string('localizacao')->nullable();
                 $table->string('email_estabelecimento')->nullable();
                 $table->string('endereco')->nullable();
-                $table->boolean('cliente_agendar')->nullable();
-                $table->boolean('cliente_alterar_horario')->nullable();
-                $table->boolean('cliente_desmarcar_horario')->nullable();
+                $table->boolean('client_agendar')->nullable();
+                $table->boolean('client_alterar_horario')->nullable();
+                $table->boolean('client_desmarcar_horario')->nullable();
                 $table->time('inicio')->nullable();
                 $table->time('inicio_almoco')->nullable();
                 $table->time('fim_almoco')->nullable();
                 $table->time('fim')->nullable(); 
             });
-//            DB::table('configuracao')->insert(['nome_estabelecimento' => 'salao','frequencia_horario' => '20','contato_estabelcimento' => '99999','localizacao' => '11','email_estabelecimento' => 'teste','endereco' => 'teste','cliente_agendar' => 'teste','cliente_alterar_horario' => 'teste','cliente_desmarcar_horario' => 'teste','inicio' => 'teste','inicio_almoco' => 'teste','fim_almoco' => 'teste','fim' => 'teste']);
+//            DB::table('configuracao')->insert(['name_estabelecimento' => 'salao','frequencia_horario' => '20','contato_estabelcimento' => '99999','localizacao' => '11','email_estabelecimento' => 'teste','endereco' => 'teste','client_agendar' => 'teste','client_alterar_horario' => 'teste','client_desmarcar_horario' => 'teste','inicio' => 'teste','inicio_almoco' => 'teste','fim_almoco' => 'teste','fim' => 'teste']);
 
     }
 

@@ -11,19 +11,19 @@ class Galeria extends Model
     use HasFactory;
     public function listar()
     {
-        $select = DB::table('albuns')
+        $select = DB::table('album')
             ->select(
-                'albuns.id as id',
-                'albuns.name as name'
+                'album.id as id',
+                'album.name as name'
             )
             ->get();
         return $select->toArray();
     }
 
     public function fotosAlbum($request) {
-        $select = DB::table('imagens')
+        $select = DB::table('image')
             ->select(
-                'imagens.nome_arquivo as imageUrl'
+                'image.name_arquivo as imageUrl'
             )
             ->where('album_id', '=', $request->id)
             ->get();
@@ -33,7 +33,7 @@ class Galeria extends Model
 
     public function getById($request)
     {
-        $select = DB::table('albuns')
+        $select = DB::table('album')
             ->select('*')
             ->where('id', '=', $request->idFeriado)
             ->get();
@@ -42,9 +42,9 @@ class Galeria extends Model
 
     public function inserir($request)
     {
-        DB::table('albuns')->insert([
+        DB::table('album')->insert([
             'name' => $request->name,
-            'descricao' => ''
+            'description' => ''
         ]);
 
         return true;

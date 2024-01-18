@@ -21,7 +21,7 @@ class Ferias extends Model
         DB::table('ferias')->insert([
             'inicio' => $request->inicio,
             'fim' => $request->fim,
-            'id_funcionario' => $request->id_funcionario
+            'id_employee' => $request->id_employee
         ]);
 
         return true;

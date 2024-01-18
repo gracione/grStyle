@@ -88,7 +88,7 @@ class Horario extends Model
         try {
             DB::table('horario')
                 ->where('id', $request->id)
-                ->update(['confirmado' => true]);
+                ->update(['confirmed' => true]);
         } catch (Exception $e) {
             return false;
         }
@@ -181,24 +181,24 @@ class Horario extends Model
             'TO_CHAR(horario.horario_inicio, \'HH24:MI\') as horario,
             TO_CHAR(horario.horario_inicio, \'HH24:MI\') as horario_inicio,
             TO_CHAR(horario.horario_inicio, \'DD Mon YYYY\') as data,
-            users.name as cliente,
-            users.number as telefone,
-            func.name as funcionario,
-            t.name as services_profession,
-            horario.confirmado as confirmado,
-            horario.nome_cliente as nome_cliente,
+            user.name as client,
+            user.number as telefone,
+            func.name as employee,
+            t.name as service_profession,
+            horario.confirmed as confirmed,
+            horario.name_client as name_client,
             horario.id as idHorario'
         ))
-        ->join('users', 'users.id', '=', 'horario.id_cliente')
-        ->join('funcionario', 'funcionario.id', '=', 'horario.id_funcionario')
-        ->join('users as func', 'func.id', '=', 'funcionario.id_usuario')
-        ->join('services_profession as t', 't.id', '=', 'horario.id_tratamento')
+        ->join('user', 'user.id', '=', 'horario.id_client')
+        ->join('employee', 'employee.id', '=', 'horario.id_employee')
+        ->join('user as func', 'func.id', '=', 'employee.id_user')
+        ->join('service_profession as t', 't.id', '=', 'horario.id_service_profession')
         ->where('horario.horario_inicio', '>=', $request->dataInicio)
         ->where('horario.horario_inicio', '<=', $request->dataFim);
     
         if ($request->tipoUsuario == Constantes::CLIENTE) {
             $select = $select
-                ->where('horario.id_cliente', $request->idUsuario)->get();
+                ->where('horario.id_client', $request->idUsuario)->get();
         } else if ($request->tipoUsuario == Constantes::FUNCIONARIO) {
             $select = $select
                 ->where('func.id', $request->idUsuario)->get();
@@ -215,8 +215,8 @@ class Horario extends Model
         $select = DB::table('horario')
             ->select(DB::raw('TIME_FORMAT(horario.horario_inicio, "%H:%i") as horario_inicio,
         TIME_FORMAT(horario.horario_fim, "%H:%i") as horario_fim'))
-            ->join('funcionario', 'funcionario.id', '=', 'horario.id_funcionario')
-            ->where('funcionario.id_usuario', $idUsuario)
+            ->join('employee', 'employee.id', '=', 'horario.id_employee')
+            ->where('employee.id_user', $idUsuario)
             ->whereDay('horario.horario_inicio', $dataExplode[2])
             ->whereMonth('horario.horario_inicio', $dataExplode[1])
             ->whereYear('horario.horario_inicio', $dataExplode[0])

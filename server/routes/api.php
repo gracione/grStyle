@@ -121,7 +121,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 //    Route::post('/configurations/upload-image', [App\Http\Controllers\API\AuthController::class, 'uploadImage'])->name('api.upload.image');
 
     // Users
-//    Route::get('/users', [App\Http\Controllers\API\AuthController::class, 'index']);
+//    Route::get('/user', [App\Http\Controllers\API\AuthController::class, 'index']);
 
     //Route::get('/mensagens', [App\Http\Controllers\MensagemController::class, 'index']);
     //Route::post('/mensagens', [App\Http\Controllers\MensagemController::class, 'listar']);

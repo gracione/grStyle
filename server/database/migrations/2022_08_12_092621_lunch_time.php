@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class HorarioAlmoco extends Migration
+class LunchTime extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class HorarioAlmoco extends Migration
      */
     public function up()
     {
-        Schema::create('horario_trabalho', function (Blueprint $table) {
+        Schema::create('lunch_time', function (Blueprint $table) {
             $table->increments('id');
             $table->time('inicio1');
             $table->time('fim1');
             $table->time('inicio2');
             $table->time('fim2');
-            $table->integer('id_usuario')->unsigned();
-            $table->foreign('id_usuario')->references('id')->on('users');
+            $table->integer('id_user')->unsigned();
+            $table->foreign('id_user')->references('id')->on('user');
         });
     }
 

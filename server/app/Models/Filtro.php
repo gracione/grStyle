@@ -12,19 +12,19 @@ class Filtro extends Model
 
     public function listar()
     {
-        $users = DB::table('filtro_tipo')
+        $user = DB::table('filtro_tipo')
             ->join('funcao_tipo', 'funcao_tipo.id', '=', 'filtro_tipo.id_funcao_tipo')
             ->select('filtro_tipo.id', 'filtro_tipo.name as filtro', 'funcao_tipo.name as funcao')
             ->get();
-        return $users;
+        return $user;
     }
 
     public function listarFiltro($request)
     {
         $filtroTipo = DB::table('filtro_tipo')
-            ->join('services_profession', 'filtro_tipo.id_tratamento', '=', 'services_profession.id')
-            ->join('profession', 'services_profession.id_profissao', '=', 'profession.id')
-            ->where('filtro_tipo.id_tratamento', '=', $request->id_tratamento)
+            ->join('service_profession', 'filtro_tipo.id_service_profession', '=', 'service_profession.id')
+            ->join('profession', 'service_profession.id_profissao', '=', 'profession.id')
+            ->where('filtro_tipo.id_service_profession', '=', $request->id_service_profession)
             ->select(DB::raw('distinct filtro_tipo.id as id'), 'filtro_tipo.name as name')
             ->get();
 
@@ -42,10 +42,10 @@ class Filtro extends Model
 
     public static function filtroById($idFiltro)
     {
-        $users = DB::table('filtro')
+        $user = DB::table('filtro')
             ->select(DB::raw('porcentagem_tempo'))
             ->whereIn('id', $idFiltro)
             ->get();
-        return $users;
+        return $user;
     }
 }

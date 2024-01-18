@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CriarTabelaAlbuns extends Migration
+class Holiday extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CriarTabelaAlbuns extends Migration
      */
     public function up()
     {
-        Schema::create('albuns', function (Blueprint $table) {
-            $table->id();
+        Schema::create('holidays', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('name');
-            $table->text('descricao')->nullable();
-            $table->timestamps();
+            $table->date('data');
         });
     }
 
@@ -28,6 +27,6 @@ class CriarTabelaAlbuns extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('albuns');
+        Schema::dropIfExists('feriados');
     }
 }

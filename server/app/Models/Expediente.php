@@ -13,19 +13,19 @@ class Expediente
     protected $table = 'horario_trabalho';
     public $timestamps = false;
 
-    protected $fillable = ['inicio1','fim1','inicio2','fim2','id_usuario'];
+    protected $fillable = ['inicio1','fim1','inicio2','fim2','id_user'];
 
-    public function funcionario()
+    public function employee()
     {
-        return $this->belongsTo(Funcionario::class, 'id_funcionario');
+        return $this->belongsTo(Funcionario::class, 'id_employee');
     }
 
     public function listar()
     {
         $resultado = DB::table('horario_trabalho')
-            ->join('users', 'users.id', '=', 'horario_trabalho.id_usuario')
+            ->join('user', 'user.id', '=', 'horario_trabalho.id_user')
             ->select(
-                'users.name as funcionario',
+                'user.name as employee',
                 'horario_trabalho.id as id',
                 'horario_trabalho.inicio1 as inicio_de_expediente',
                 'horario_trabalho.fim1 as inicio_horario_de_almoco',
@@ -40,17 +40,17 @@ class Expediente
     public function getById($id)
     {
         $result = DB::table('horario_trabalho')
-            ->join('users', 'users.id', '=', 'horario_trabalho.id_usuario')
-            ->join('funcionario', 'funcionario.id_usuario', '=', 'users.id')
+            ->join('user', 'user.id', '=', 'horario_trabalho.id_user')
+            ->join('employee', 'employee.id_user', '=', 'user.id')
             ->select(
-                'users.name as name',
+                'user.name as name',
                 'horario_trabalho.id as id',
                 'horario_trabalho.inicio1 as inicio_de_expediente',
                 'horario_trabalho.fim1 as inicio_horario_de_almoco',
                 'horario_trabalho.inicio2 as fim_horario_de_almoco',
                 'horario_trabalho.fim2 as fim_de_expediente'
             )
-            ->where('users.id', '=', $id)
+            ->where('user.id', '=', $id)
             ->first();
 
         return $result ? (array) $result : null;
@@ -59,17 +59,17 @@ class Expediente
     public function getByIdUsuario($idUsuario)
     {
         $result = DB::table('horario_trabalho')
-            ->join('users', 'users.id', '=', 'horario_trabalho.id_usuario')
-            ->join('funcionario', 'funcionario.id_usuario', '=', 'users.id')
+            ->join('user', 'user.id', '=', 'horario_trabalho.id_user')
+            ->join('employee', 'employee.id_user', '=', 'user.id')
             ->select(
-                'users.name as name',
+                'user.name as name',
                 'horario_trabalho.id as id',
                 'horario_trabalho.inicio1 as inicio_de_expediente',
                 'horario_trabalho.fim1 as inicio_horario_de_almoco',
                 'horario_trabalho.inicio2 as fim_horario_de_almoco',
                 'horario_trabalho.fim2 as fim_de_expediente'
             )
-            ->where('users.id', '=', $idUsuario)
+            ->where('user.id', '=', $idUsuario)
             ->first();
 
         return $result ? (array) $result : null;
@@ -77,11 +77,11 @@ class Expediente
     public function getByIdFuncionario($id)
     {
         $result = DB::table('horario_trabalho')
-            ->join('users', 'users.id', '=', 'horario_trabalho.id_usuario')
-            ->join('funcionario', 'funcionario.id_usuario', '=', 'users.id')
-            ->where('funcionario.id', '=', $id)
+            ->join('user', 'user.id', '=', 'horario_trabalho.id_user')
+            ->join('employee', 'employee.id_user', '=', 'user.id')
+            ->where('employee.id', '=', $id)
             ->select(
-                'users.name as name',
+                'user.name as name',
                 'horario_trabalho.id as id',
                 'horario_trabalho.inicio1 as inicio_de_expediente',
                 'horario_trabalho.fim1 as inicio_horario_de_almoco',
@@ -100,7 +100,7 @@ class Expediente
             'fim1' => $request->inicioAlmoco . ":00",
             'inicio2' => $request->fimAlmoco . ":00",
             'fim2' => $request->fimExpediente . ":00",
-            'id_funcionario' => $request->idFuncionario
+            'id_employee' => $request->idFuncionario
         ];
 
         $this->fill($data);
